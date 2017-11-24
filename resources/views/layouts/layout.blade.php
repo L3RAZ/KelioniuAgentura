@@ -15,8 +15,10 @@
 	</div>
 </header>
 <div class="content">
+
 @yield('content')
 </div>
+
 <footer>
 	<p>2017 &copy; Yoga Cats</p>
 </footer>

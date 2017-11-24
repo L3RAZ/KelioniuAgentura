@@ -12,6 +12,9 @@ body {
 	display: block;
 	font-family: 'Hind Vadodara', sans-serif;
 	color: white;
+	clear: both;
+	margin: 0;
+	padding: 0;
 }
 
 header {
@@ -59,12 +62,16 @@ footer {
 	border-right: 1px solid #68B2DF;
 	border-left: 1px solid #68B2DF;
 	box-shadow: 0px 0px 40px -5px rgba(104,178,223,1);
+	flex: 1;
+	clear: both;
+	display: flex;
+	color: white;
 }
 
 .button {
 	width: 100%;
 	padding: 0;
-	margin: 5% 0;
+	margin-top:5%;
 	height: 50px;
 	background-color: #343434;
 	border: 1px solid #68B2DF;
@@ -73,4 +80,21 @@ footer {
 
 .button:hover {
 	box-shadow: 0px 0px 40px -5px rgba(104,178,223,1);
+}
+
+.row {
+	width: 100%;
+}
+
+h2 {
+	text-align: center;
+}
+
+#kelionesTable {
+	width: 80%;
+	margin: 0 10%;
+}
+
+#kelionesTable td {
+	width: 25%;
 }
