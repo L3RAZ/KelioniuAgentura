@@ -17,4 +17,9 @@ class KelioneController extends Controller
         ->paginate(10);
         return view('layouts.index', compact('keliones'));
     }
+
+    public function show($id)
+    {
+        return view('layouts.kelione');
+    }
 }
