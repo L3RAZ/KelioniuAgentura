@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'KelioneController@index');
+
+//Route::view('/', 'layouts.index');
+
+
+/*Route::get('/', function () {
+    return view('layouts.index');
+});*/
