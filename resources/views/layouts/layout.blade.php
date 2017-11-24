@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kelionių Agentūra</title>
+	<link rel="stylesheet" type="text/css" href="<?php echo asset('../css/style.css')?>" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:500" rel="stylesheet">
+</head>
+<body>
+<header>
+	<div class="headerImg">
+		<div class="headerTitle">
+			<h1>Kelionių agentūra</h1>
+		</div>		
+	</div>
+</header>
+<div class="content">
+@yield('content')
+</div>
+<footer>
+	<p>2017 &copy; Yoga Cats</p>
+</footer>
+</body>
+</html>
