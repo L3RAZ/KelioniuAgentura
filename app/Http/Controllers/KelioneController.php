@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kelione;
+use App\Kelioniu_datos;
 use DB;
 
 class KelioneController extends Controller
@@ -27,7 +28,11 @@ class KelioneController extends Controller
         ->where('keliones.id', '=', $id)
         ->first();
 
+        $datos = Kelioniu_datos::select('id', 'keliones_nr', 'isvykimo_data', 'grizimo_data', 'laisvu_vietu_sk')
+        ->where('keliones_nr', '=', $id)
+        ->get();
 
-        return view('layouts.kelione', compact('kelione'));
+
+        return view('layouts.kelione', compact('kelione'), compact('datos'));
     }
 }

@@ -6,6 +6,9 @@
         <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Kelionės pasiūlymas</h2>
     </div>
 <div class="row">
+<a href="{{ URL::previous() }}"><< Atgal</a>
+</div>
+<div class="row">
 <table>
     <tr>
         <td>Kelionės kryptis: </td>
@@ -33,6 +36,27 @@
     </tr>
 </table>
 </div>
+<div class="row"><p>Galimi kelionės laikai:</p></div>
+@foreach($datos as $data)
+<div class="row">
+    
+        <table>
+            <tr>
+                <td>Išvykimo data: </td>
+                <td>{{ $data->isvykimo_data}}</td>
+            </tr>
+            <tr>
+                <td>Grįžimo data: </td>
+                <td>{{ $data->grizimo_data}}</td>
+            </tr>
+            <tr>
+                <td>Laisvų vietų: </td>
+                <td>{{ $data->laisvu_vietu_sk}}</td>
+            </tr> 
+        </table>
+    
+</div>
+@endforeach
 <div class="row">
     <!-- sita paskui paslepti nuo neprisijungusiu vartotoju-->
     <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4"><input type="button" name="uzsakyti" value="Užsakyti" class="button"></div>
