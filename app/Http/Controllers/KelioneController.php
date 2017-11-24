@@ -20,6 +20,14 @@ class KelioneController extends Controller
 
     public function show($id)
     {
-        return view('layouts.kelione');
+        $kelione = Kelione::select('keliones.id', DB::raw('miestas.pavadinimas as miesto_pav'), 
+                                    'valstybe', 'kaina', 'transporto_priemones', 'aprasymas', DB::raw('keliones_tipas.tipas as kel_tipas'))
+        ->join('miestas', 'miestas.kodas', '=', 'keliones.miesto_kodas')
+        ->join('keliones_tipas', 'keliones_tipas.id', '=', 'keliones.tipas')
+        ->where('keliones.id', '=', $id)
+        ->first();
+
+
+        return view('layouts.kelione', compact('kelione'));
     }
 }
