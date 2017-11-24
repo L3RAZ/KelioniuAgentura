@@ -5,12 +5,13 @@
 
 body {
 	overflow-x: hidden;
-	background-color: #222;
+	background-color: #222 !important;
 	width: 100vw;
 	position: relative;
 	height: auto;
 	display: block;
 	font-family: 'Hind Vadodara', sans-serif;
+	color: white;
 }
 
 header {
@@ -24,9 +25,8 @@ header {
 }
 
 .headerTitle {
-	margin-top: 80px;
+	margin-top: 70px;
 	background-color: white;
-	padding: 5px;
 	position: absolute;
 	width: 100%;
 	overflow-x: hidden;
@@ -34,6 +34,7 @@ header {
 
 .headerTitle h1, footer p {
 	margin-left: 8.33%;
+	color: #111;
 }
 
 .headerTitle h1 {
@@ -57,5 +58,19 @@ footer {
 	margin: 0 8.33%;
 	border-right: 1px solid #68B2DF;
 	border-left: 1px solid #68B2DF;
+	box-shadow: 0px 0px 40px -5px rgba(104,178,223,1);
+}
+
+.button {
+	width: 100%;
+	padding: 0;
+	margin: 5% 0;
+	height: 50px;
+	background-color: #343434;
+	border: 1px solid #68B2DF;
+	color: white;
+}
+
+.button:hover {
 	box-shadow: 0px 0px 40px -5px rgba(104,178,223,1);
 }

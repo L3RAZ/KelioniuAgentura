@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-<div>
-    <h2>Kelionių pasiūlymai</h2>
-</div>
+<div class="col-6 col-sm-6 col-md-6 col-xs-6"><input type="button" name="prisijungti" value="Prisijungti" class="button"></div>
+<div class="col-6 col-sm-6 col-md-6 col-xs-6"><input type="button" name="registruotis" value="Registruotis" class="button"></div>
 @endsection
