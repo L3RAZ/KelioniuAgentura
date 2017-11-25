@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Sutartys;
 use App\Kelioniu_datos;
 use App\Viesbuciai_keliones;
+use App\Ekskursijos;
+use App\Auto_nuomos;
 use DB;
 use Eloquent;
 use Session;
 use Auth;
+use Redirect;
 
 class SutartysController extends Controller
 {
@@ -61,6 +64,9 @@ class SutartysController extends Controller
 
     public function showkliento()
     {
+        if(!Auth::check())
+            return Redirect::to('/');
+
         $vartotojo_id = Auth::id();
         $sutartys = Sutartys::where('vartotojo_id', '=', $vartotojo_id)->get();
         foreach($sutartys as $sutartis){
@@ -90,7 +96,7 @@ class SutartysController extends Controller
                             DB::raw('keliones.valstybe as valstybe'), DB::raw('miestas.pavadinimas as miestas'),
                             DB::raw('kelioniu_datos.isvykimo_data as isvykimas'),DB::raw('kelioniu_datos.grizimo_data as grizimas'),
                             DB::raw('viesbuciai.pavadinimas as vies_pav'), DB::raw('viesbuciai.adresas as vies_adr'), 
-                            'zmoniu_sk', 'bendra_kaina')
+                            'zmoniu_sk', 'bendra_kaina', 'draudimo_nr')
                             ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
                             ->join('sutarties_busena', 'sutartys.busena', '=', 'sutarties_busena.id')
                             ->join('keliones', 'sutartys.keliones_nr', '=', 'keliones.id')
@@ -99,5 +105,18 @@ class SutartysController extends Controller
                             ->where('vartotojo_id', '=', $vartotojo_id)
                             ->paginate(2);
         return view('layouts.klientoUzsakymai', compact('kliento_sutartys'));
+    }
+
+    public static function getPaslaugos($sutarties_nr)
+    {
+        $ekskursijos = Ekskursijos::where('sutarties_nr', '=', $sutarties_nr)->get();
+        $auto_nuomos = Auto_nuomos::where('sutarties_nr', '=', $sutarties_nr)->get();
+        $draudimas = Sutartys::select(DB::raw('draudimai.*'))
+        ->join('draudimai', 'sutartys.draudimo_nr', '=', 'draudimai.nr')
+        ->join('draudimo_tipas', 'draudimai.tipas', '=', 'draudimo_tipas.id')
+        ->where('sutartys.nr', '=', $sutarties_nr)
+        ->first();
+
+        return compact('ekskursijos');
     }
 }

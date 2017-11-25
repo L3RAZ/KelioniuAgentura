@@ -1,6 +1,9 @@
+
+
 @extends('layouts.layout')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Jūsų užsakymai</h2>
@@ -48,7 +51,7 @@
             <tr>
                 <td>Užsakymo kaina: </td>
                 <td>{{ $sutartis->bendra_kaina}} &euro;</td>
-            </tr>  
+            </tr>
         </table>
     
     </div>
