@@ -13,3 +13,5 @@
 
 Route::get('/', 'KelioneController@index');
 Route::get('/keliones/{id}', 'KelioneController@show');
+Route::get('/pridetiuzsakyma', 'SutartysController@create');
+Route::post('/pridetiuzsakyma', 'SutartysController@store');
