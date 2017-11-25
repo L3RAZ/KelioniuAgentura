@@ -11,7 +11,7 @@
 
 	<div class="headerImg">
 		<div class="headerTitle">
-			<h1>Kelionių agentūra</h1>	
+			<h1></h1>	
 		</div>
 	</div>
 </header>
