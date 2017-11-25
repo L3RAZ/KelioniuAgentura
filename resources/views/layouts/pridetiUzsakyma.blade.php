@@ -37,7 +37,7 @@
 <div class="row" >
     <label for="viesbutis" class="col-md-4 control-label" name="viesbutislabel">Pasirinkite viešbutį: </label>
     <div class="col-md-6">
-        <select id="viesbutis" type="text" class="form-control" name="viesbutis">
+        <select id="viesbucio_id" type="text" class="form-control" name="viesbucio_id">
             <option value="" ></option>
             @foreach($viesbuciai as $viesbutis)
                 <option value="{{ $viesbutis->viesbucio_id }}">{{ $viesbutis->pavadinimas }} {{ $viesbutis->reitingas }}</option>
@@ -46,10 +46,19 @@
     </div>
 </div>
 
-<input id="sukurimo_data" type="hidden" value="<?php echo date("Y-m-d");?>">
-<input id="yra_archyvuota" type="hidden" value="true">
-<input id="busena" type="hidden" value="1">
-<input id="vartotojo_id" type="hidden" value="1"><!-- pakeisti i vartotojo id pagal sesija -->
+<div class="row" >
+    <label for="zmoniu_sk" class="col-md-4 control-label" name="zmoniulabel">Nurodykite asmenų skaičių: </label>
+    <div class="col-md-6">
+        <input name="zmoniu_sk" type="text" style="color: black;">
+    </div>
+</div>
+
+<input name="sudarymo_data" type="hidden" value="<?php echo date("Y-m-d");?>">
+<input name="yra_archyvuota" type="hidden" value="0">
+<input name="busena" type="hidden" value="1">
+<input name="vartotojo_id" type="hidden" value="1"><!-- pakeisti i vartotojo id pagal sesija -->
+<input name="keliones_nr" type="hidden" value="{{ Session::get('kelione')->id}}">
+<input name="bendra_kaina" type="hidden" value="0">
 
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">

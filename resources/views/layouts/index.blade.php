@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-
-
 <div class="container">
 <div class="row">
     <div class="col-6 col-sm-6 col-md-6 col-xs-6" style="width: 50%;"><input type="button" name="prisijungti" value="Prisijungti" class="button"></div>

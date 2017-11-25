@@ -21,6 +21,7 @@ class SutartysController extends Controller
     {
         $keliones_nr = Session::get('kelione')->id;
         $datos = Kelioniu_datos::where('keliones_nr', '=', $keliones_nr)
+        ->where('laisvu_vietu_sk', '>', '1')
         ->get();
 
         $viesbuciai = Viesbuciai_keliones::select('viesbucio_id', 
@@ -32,24 +33,23 @@ class SutartysController extends Controller
         return view('layouts.pridetiUzsakyma', compact('datos', 'viesbuciai'));
     }
 
-    public function store(Request $request) {
+    public function store() {
         Eloquent::unguard();
 
-        $this->validate($request, [
+        $this->validate(request(), [
             'pasirinkta_data' => 'required',
             'vartotojo_id' => 'required',
             'keliones_nr' => 'required',
             'viesbucio_id' => 'required',
             'sudarymo_data' => 'required',
-            'bendra_kaina' => 'required',
-            'yra_archyvuota' => 'required'
+            'yra_archyvuota' => 'required',
+            'zmoniu_sk' => 'required'
         ],
         [
-            'keliones_nr.required' => 'nera keliones',
-            'bendra_kaina.required' => 'nera kainos'
+            'keliones_nr.required' => 'nera keliones'
         ]);
-        $data = request();
-        $sutartis = Sutartys::create($data);
+        Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'viesbucio_id', 'sudarymo_data', 'pasirinkta_data', 
+        'bendra_kaina', 'busena', 'zmoniu_sk']));
 
         return redirect('/');
     }

@@ -23,7 +23,7 @@ class CreateSutartysTable extends Migration
             $table->integer('pasirinkta_data')->unsigned();
             $table->double('bendra_kaina');
             $table->date('nutraukimo_data')->nullable($value = true);
-            $table->boolean('yra_archyvuota');
+            $table->boolean('yra_archyvuota')->default(false);
             $table->integer('busena')->unsigned();
             $table->integer('zmoniu_sk');
         });
