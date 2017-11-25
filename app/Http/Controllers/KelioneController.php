@@ -7,6 +7,7 @@ use App\Kelione;
 use App\Kelioniu_datos;
 use App\Viesbuciai_keliones;
 use DB;
+use Session;
 
 class KelioneController extends Controller
 {
@@ -28,6 +29,8 @@ class KelioneController extends Controller
         ->join('keliones_tipas', 'keliones_tipas.id', '=', 'keliones.tipas')
         ->where('keliones.id', '=', $id)
         ->first();
+
+        Session::put(['kelione'=>$kelione]);
 
         $datos = Kelioniu_datos::select('id', 'keliones_nr', 'isvykimo_data', 'grizimo_data', 'laisvu_vietu_sk')
         ->where('keliones_nr', '=', $id)
