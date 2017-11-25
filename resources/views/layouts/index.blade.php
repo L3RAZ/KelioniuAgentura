@@ -2,10 +2,6 @@
 
 @section('content')
 <div class="container">
-<div class="row">
-    <div class="col-6 col-sm-6 col-md-6 col-xs-6" style="width: 50%;"><input type="button" name="prisijungti" value="Prisijungti" class="button"></div>
-    <div class="col-6 col-sm-6 col-md-6 col-xs-6" style="width: 50%;"><input type="button" name="registruotis" value="Registruotis" class="button"></div>
-</div>
 <!-- paslepti nuo kliento, darbuotojo ir neprisijungusio -->
 <div class="row">
     <div class="col-12 col-sm-12 col-md-12 col-xs-12"><input type="button" name="admin" value="Administratoriaus sąsaja" class="button"></div>
