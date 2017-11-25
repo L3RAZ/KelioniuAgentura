@@ -14,7 +14,7 @@ class CreateMiestasTable extends Migration
     public function up()
     {
         Schema::create('miestas', function (Blueprint $table) {
-            $table->increments('kodas');
+            $table->string('kodas');
             $table->string('pavadinimas');
             $table->integer('pasto_kodas')->nullable($value = true);
             $table->string('meras')->nullable($value = true);
