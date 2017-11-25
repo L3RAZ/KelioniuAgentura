@@ -12,10 +12,4 @@
 */
 
 Route::get('/', 'KelioneController@index');
-
-//Route::view('/', 'layouts.index');
-
-
-/*Route::get('/', function () {
-    return view('layouts.index');
-});*/
+Route::get('/keliones/{id}', 'KelioneController@show');

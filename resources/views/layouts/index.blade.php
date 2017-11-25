@@ -12,7 +12,7 @@
             @foreach($keliones as $kelione)
                 <tr class="tableRow">
                     <td style="width: 75%">{{$kelione['valstybe']}}      {{$kelione['miestas']}}     {{$kelione['kaina']}} &euro;</td>
-                    <td><a href="" style="width: 25%;">plačiau</a>
+                    <td><a href="{{ url('/keliones/'.$kelione['id']) }}" onClick="KelioneController::show($kelione['id'])" style="width: 25%;">plačiau</a>
                 </tr>
             @endforeach
     </table>
