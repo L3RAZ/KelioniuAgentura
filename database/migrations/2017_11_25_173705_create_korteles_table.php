@@ -15,6 +15,13 @@ class CreateKortelesTable extends Migration
     {
         Schema::create('korteles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('savininko_id');
+            $table->string('saskaitos_nr');
+            $table->string('banko_pavadinimas');
+            $table->string('korteles_nr');
+            $table->string('galiojimo_data');
+            $table->string('korteles_tipas');
+            $table->integer('cvv')->lentgh(10);
             $table->timestamps();
         });
     }

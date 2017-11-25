@@ -12,9 +12,11 @@ class KorteleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $id = $request->user()->id;
+        $korteles = Kortele::Where('savininko_id',$id)->get();
+        return view('korteles.sarasas',compact('korteles'));
     }
 
     /**
@@ -35,7 +37,7 @@ class KorteleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -69,7 +71,7 @@ class KorteleController extends Controller
      */
     public function update(Request $request, Kortele $kortele)
     {
-        //
+        
     }
 
     /**
@@ -80,6 +82,7 @@ class KorteleController extends Controller
      */
     public function destroy(Kortele $kortele)
     {
-        //
+        $kortele->delete();
+        return redirect('/korteles');
     }
 }
