@@ -1,12 +1,13 @@
 @extends('layouts.layout')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Kelionės pasiūlymas</h2>
     </div>
 <div class="row">
-<a href="{{ URL::previous() }}"><< Atgal</a>
+<a href="{{ url('/') }}"><< Atgal į pradžią</a>
 </div>
 <div class="row">
 <table>
@@ -88,7 +89,7 @@
 @endforeach
 <div class="row">
     <!-- sita paskui paslepti nuo neprisijungusiu vartotoju-->
-    <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4"><input type="button" name="uzsakyti" value="Užsakyti" class="button"></div>
+    <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" onclick="window.location='{{ url('/pridetiuzsakyma') }}'"><input type="button" name="uzsakyti" value="Užsakyti" class="button"></div>
 </div>
 </div>
 @endsection

@@ -8,12 +8,19 @@
 </head>
 <body>
 <header>
+
 	<div class="headerImg">
 		<div class="headerTitle">
+<<<<<<< HEAD
 			<h1></h1>
 		</div>		
+=======
+			<h1>Kelionių agentūra</h1>	
+		</div>
+>>>>>>> develop
 	</div>
 </header>
+@include('layouts.navbar')
 <div class="content">
 
 @yield('content')
