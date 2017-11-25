@@ -46,7 +46,9 @@ class SutartysController extends Controller
             'zmoniu_sk' => 'required'
         ],
         [
-            'keliones_nr.required' => 'nera keliones'
+            'pasirinkta_data.required' => 'Būtina pasirinkti kelionės datą.',
+            'viesbucio_id.required' => 'Būtina pasirinkti viešbutį.',
+            'zmoniu_sk.required' => 'Būtina nurodyti asmenų skaičių'
         ]);
         Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'viesbucio_id', 'sudarymo_data', 'pasirinkta_data', 
         'bendra_kaina', 'busena', 'zmoniu_sk']));

@@ -5,12 +5,7 @@
     <div class="row">
         <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Užsakymas</h2>
     </div>
-<div class="row">
-    <a href="{{ url('/') }}"><< Atgal į pradžią</a>
-</div>
-<div class="row">
-    <p>Jūsų pasirinkta kelionė: {{ Session::get('kelione')->valstybe}}  {{Session::get('kelione')->miesto_pav}} {{Session::get('kelione')->kaina}} &euro;</p>
-</div>
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -20,6 +15,12 @@
         </ul>
     </div>
 @endif
+<div class="row">
+    <a href="{{ url('/') }}"><< Atgal į pradžią</a>
+</div>
+<div class="row">
+    <p>Jūsų pasirinkta kelionė: {{ Session::get('kelione')->valstybe}}  {{Session::get('kelione')->miesto_pav}} {{Session::get('kelione')->kaina}} &euro;</p>
+</div>
 <form method="post">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="row" >
