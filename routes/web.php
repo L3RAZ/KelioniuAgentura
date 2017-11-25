@@ -22,3 +22,4 @@ Route::get('/', 'KelioneController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/keliones/{id}', 'KelioneController@show');
