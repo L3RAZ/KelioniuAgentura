@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Role;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,8 +50,12 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'birth_date'=>'required|date',
+            'address'=>'string|max:50',
+            'phone'=>'required|string|max:20'
         ]);
     }
 
@@ -65,7 +70,16 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'surname' => $data['surname'],
             'password' => bcrypt($data['password']),
+            'person_id'=>$data['person_id'],
+            'birth_date'=>$data['birth_date'],
+            'address'=>$data['address'],
+            'has_licencse'=>$data['has_license'],
+            'license_from'=>$data['license_from'],
+            'phone'=>$data['phone']
         ]);
+        $user->roles()->attach(Role::where('name', 'employee')->first());
+     return $user;
     }
 }
