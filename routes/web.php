@@ -12,4 +12,16 @@
 */
 
 Route::get('/', 'KelioneController@index');
+
+//Route::view('/', 'layouts.index');
+
+
+/*Route::get('/', function () {
+    return view('layouts.index');
+});*/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/keliones/{id}', 'KelioneController@show');
+Route::get('/pridetiuzsakyma', 'SutartysController@create');
+Route::post('/pridetiuzsakyma', 'SutartysController@store');
