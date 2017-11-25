@@ -56,7 +56,7 @@ class SutartysController extends Controller
 
         //Session::put(['sutartis', $sutartis]);
 
-        return redirect('/');
+        return redirect('/klientouzsakymai');
     }
 
     public function showkliento()
@@ -82,13 +82,22 @@ class SutartysController extends Controller
                 
                 Sutartys::where('sutartys.nr', '=', $sutartis->nr)
                 ->update(['bendra_kaina' => $bendra_kaina]);
-
-                //$sutartis->save();
             
             }
         }
 
-        $kliento_sutartys = Sutartys::where('vartotojo_id', '=', $vartotojo_id)->get();
+        $kliento_sutartys = Sutartys::select('sutartys.nr', 'sudarymo_data', DB::raw('sutarties_busena.busena as sut_busena'),
+                            DB::raw('keliones.valstybe as valstybe'), DB::raw('miestas.pavadinimas as miestas'),
+                            DB::raw('kelioniu_datos.isvykimo_data as isvykimas'),DB::raw('kelioniu_datos.grizimo_data as grizimas'),
+                            DB::raw('viesbuciai.pavadinimas as vies_pav'), DB::raw('viesbuciai.adresas as vies_adr'), 
+                            'zmoniu_sk', 'bendra_kaina')
+                            ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
+                            ->join('sutarties_busena', 'sutartys.busena', '=', 'sutarties_busena.id')
+                            ->join('keliones', 'sutartys.keliones_nr', '=', 'keliones.id')
+                            ->join('miestas', 'miestas.kodas', '=', 'keliones.miesto_kodas')
+                            ->join('viesbuciai', 'sutartys.viesbucio_id', '=', 'viesbuciai.id')
+                            ->where('vartotojo_id', '=', $vartotojo_id)
+                            ->paginate(2);
         return view('layouts.klientoUzsakymai', compact('kliento_sutartys'));
     }
 }
