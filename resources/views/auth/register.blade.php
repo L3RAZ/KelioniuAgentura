@@ -144,7 +144,7 @@
                         <div class="form-group{{ $errors->has('license_from') ? ' has-error' : '' }}">
                             <label for="license_from" class="col-md-4 control-label">Vairavimo stažas nuo:</label>
                             <div class="col-md-6">
-                                <input id="license_from" type="date" class="form-control" name="license_from" value="{{ old('license_from') }}" required>
+                                <input id="license_from" type="date" class="form-control" name="license_from" value="{{ old('license_from') }}">
 
                                 @if ($errors->has('license_from'))
                                     <span class="help-block">
