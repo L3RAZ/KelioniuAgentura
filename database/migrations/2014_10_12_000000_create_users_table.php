@@ -20,11 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('surname');
             $table->string('email')->unique();
             $table->string('password');
-<<<<<<< HEAD
-            $table->long('person_id');
-=======
             $table->string('person_id');
->>>>>>> Korteles
             $table->date('birth_date');
             $table->string('address')->nullable();
             $table->boolean('has_license')->nullable();
