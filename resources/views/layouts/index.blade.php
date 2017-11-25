@@ -12,7 +12,7 @@
 </div>
 <!-- paslepti nuo darbuotojo, admino ir neprisijungusio -->
 <div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-xs-12"><input type="button" name="admin" value="Jūsų sutartys" class="button"></div>
+    <div class="col-12 col-sm-12 col-md-12 col-xs-12"><input type="button" name="admin" value="Jūsų sutartys" class="button" onClick="window.location='{{ url('/klientouzsakymai') }}'"></div>
 </div>
 <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Kelionių pasiūlymai</h2>
 <div class="row">

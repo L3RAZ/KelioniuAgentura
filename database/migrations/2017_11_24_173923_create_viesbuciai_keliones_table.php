@@ -14,6 +14,7 @@ class CreateViesbuciaiKelionesTable extends Migration
     public function up()
     {
         Schema::create('viesbuciai_keliones', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('keliones_nr')->unsigned();
             $table->integer('viesbucio_id')->unsigned();
         });

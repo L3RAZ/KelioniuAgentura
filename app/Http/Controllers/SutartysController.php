@@ -9,6 +9,7 @@ use App\Viesbuciai_keliones;
 use DB;
 use Eloquent;
 use Session;
+use Auth;
 
 class SutartysController extends Controller
 {
@@ -50,9 +51,44 @@ class SutartysController extends Controller
             'viesbucio_id.required' => 'Būtina pasirinkti viešbutį.',
             'zmoniu_sk.required' => 'Būtina nurodyti asmenų skaičių'
         ]);
-        Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'viesbucio_id', 'sudarymo_data', 'pasirinkta_data', 
+        $sutartis = Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'viesbucio_id', 'sudarymo_data', 'pasirinkta_data', 
         'bendra_kaina', 'busena', 'zmoniu_sk']));
 
+        //Session::put(['sutartis', $sutartis]);
+
         return redirect('/');
+    }
+
+    public function showkliento()
+    {
+        $vartotojo_id = Auth::id();
+        $sutartys = Sutartys::where('vartotojo_id', '=', $vartotojo_id)->get();
+        foreach($sutartys as $sutartis){
+            if($sutartis->bendra_kaina == 0) {
+                $dienos = Sutartys::select(DB::raw('datediff(kelioniu_datos.grizimo_data, kelioniu_datos.isvykimo_data) as dienos'))
+                ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
+                ->where('sutartys.nr', '=', $sutartis->nr)
+                ->first();
+                $paros_kaina = Sutartys::select(DB::raw('viesbuciai.paros_kaina as paros_kaina'))
+                ->join('viesbuciai', 'sutartys.viesbucio_id', '=', 'viesbuciai.id')
+                ->where('sutartys.nr', '=', $sutartis->nr)
+                ->first();
+                $keliones_kaina = Sutartys::select(DB::raw('keliones.kaina as kaina'))
+                ->join('keliones', 'sutartys.keliones_nr', '=', 'keliones.id')
+                ->where('sutartys.nr', '=', $sutartis->nr)
+                ->first();
+                $bendra_kaina = $dienos->dienos * $paros_kaina->paros_kaina * ($sutartis->zmoniu_sk / 2) +
+                $keliones_kaina->kaina * $sutartis->zmoniu_sk;
+                
+                Sutartys::where('sutartys.nr', '=', $sutartis->nr)
+                ->update(['bendra_kaina' => $bendra_kaina]);
+
+                //$sutartis->save();
+            
+            }
+        }
+
+        $kliento_sutartys = Sutartys::where('vartotojo_id', '=', $vartotojo_id)->get();
+        return view('layouts.klientoUzsakymai', compact('kliento_sutartys'));
     }
 }
