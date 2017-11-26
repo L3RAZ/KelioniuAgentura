@@ -88,7 +88,7 @@
                                 </div>
                                 </form>
                                 <div class="col-md-1">
-                                    <a href="/korteles" class="btn btn-danger">Atšaukti</a>
+                                    <a href="/miestai" class="btn btn-danger">Atšaukti</a>
                                 </div>
                             </div>
                             </div>
