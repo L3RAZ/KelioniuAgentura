@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="container">
+@if(count($kliento_sutartys)>0)
     <div class="row">
         <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Jūsų užsakymai</h2>
     </div>
@@ -52,8 +53,32 @@
                 <td colspan="2"><a href="{{ url('/klientouzsakymai/'.$sutartis->nr) }}" onClick="PaslaugosController::show($sutartis->nr)">Papildomos paslaugos</a></td>
             </tr>
             <tr>
-                <td><a>Apmokėti</a></td>
-                <td><a>Atšaukti</a></td>
+                <td>
+                    @if(request()->user()->hasCards() && $sutartis->busena == 1)
+                    <form method="POST" action="/sutartys/{{ $sutartis->nr }}">
+                    {{ method_field('PATCH') }}
+                    {{ csrf_field() }}
+                        <input type="hidden" name="busena" value="2">
+                        <button type="submit" class="btn btn-success">Apmokėti</button>
+                    </form>
+                    @else
+                        <button class="btn disabled">Apmokėti</button>
+                    @endif
+                </td>
+                <td>
+
+                    @if( $sutartis->busena == 4 || $sutartis->busena == 5)
+                    <button class="btn disabled">Atšaukti</button>
+                    @else
+                    <form method="POST" action="/sutartys/{{ $sutartis->nr }}">
+                        {{ method_field('PATCH') }}
+                        {{ csrf_field() }}
+                        <input type="hidden" name="busena" value="4">
+                        <button type="submit"  class="btn btn-danger">Atšaukti</button>
+                    </form>
+
+                    @endif
+                </td>
             </tr>
         </table>
     
@@ -62,5 +87,10 @@
     <div class="center">
         {!! $kliento_sutartys->render() !!}
     </div>
+    @else
+    <div class="row">
+        <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Jūs šiuo metu sutarčių neturite</h2>
+    </div>
+    @endif
 </div>
 @endsection

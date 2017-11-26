@@ -96,8 +96,8 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('horteles_tipas') ? ' has-error' : '' }}">
-                            <label for="horteles_tipas" class="col-md-4 control-label">Kortelės tipas:</label>
+                        <div class="form-group{{ $errors->has('korteles_tipas') ? ' has-error' : '' }}">
+                            <label for="korteles_tipas" class="col-md-4 control-label">Kortelės tipas:</label>
 
                             <div class="col-md-6">
                                 <select name="korteles_tipas" id="" class="form-control" required>
@@ -106,9 +106,9 @@
                                     <option value="Kreditinė">Debetinė</option>
                                 </select>
 
-                                @if ($errors->has('horteles_tipas'))
+                                @if ($errors->has('korteles_tipas'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('horteles_tipas') }}</strong>
+                                        <strong>{{ $errors->first('korteles_tipas') }}</strong>
                                     </span>
                                 @endif
                             </div>

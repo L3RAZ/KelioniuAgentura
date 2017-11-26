@@ -21,7 +21,7 @@ Route::get('/', 'KelioneController@index');
 });*/
 Auth::routes();
 Route::resource('korteles', 'KorteleController');
-Route::get('/korteles/prideti/{belenkas}','KorteleController@create');
+Route::get('/korteles/prideti/{new}','KorteleController@create');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/keliones/{id}', 'KelioneController@show');
@@ -32,6 +32,7 @@ Route::get('klientouzsakymai', 'SutartysController@showkliento');
 Route::get('/klientouzsakymai/{id}', 'PaslaugosController@show');
 Route::get('/klientouzsakymai', 'SutartysController@showkliento');
 
+<<<<<<< HEAD
 Route::get('/uzsakytiviesbuti', 'PaslaugosController@createViesbutis');
 Route::post('/uzsakytiviesbuti', 'PaslaugosController@storeViesbutis');
 
@@ -40,3 +41,12 @@ Route::post('/uzsakytidraudima', 'PaslaugosController@storeDraudimas');
 
 Route::get('/uzsakytiekskursijas', 'PaslaugosController@createEkskursija');
 Route::post('/uzsakytiekskursijas', 'PaslaugosController@storeEkskursija');
+=======
+Route::patch('/sutartys/{id}', 'SutartysController@update');
+Route::get('/viesbuciai/prideti','ViesbuciaiController@create');
+Route::post('/viesbuciai/{kazkas}','ViesbuciaiController@store');
+Route::get('/miestai/prideti', 'MiestaiController@create');
+Route::post('/miestai/{kazkas}','MiestaiController@store');
+
+Route::get('/sutartys/patvirtinimai/{id}','SutartysController@rodytidarbuotojui');
+>>>>>>> develop

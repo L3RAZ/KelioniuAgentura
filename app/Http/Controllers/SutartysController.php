@@ -19,11 +19,14 @@ class SutartysController extends Controller
 {
     public function index()
     {
-        return view('layouts.pridetiUzsakyma');
+        return view('uzsakymai.pridetiUzsakyma');
     }
 
     public function create()
     {
+        if(!Auth::check())
+        return Redirect::to('/');
+
         $keliones_nr = Session::get('kelione')->id;
         $datos = Kelioniu_datos::where('keliones_nr', '=', $keliones_nr)
         ->where('laisvu_vietu_sk', '>', '1')
@@ -71,6 +74,7 @@ class SutartysController extends Controller
     {
         if(!Auth::check())
             return Redirect::to('/');
+        //request()->user()->authorizeRoles(['Klientas','Darbuotojas']);
 
         $vartotojo_id = Auth::id();
         $sutartys = Sutartys::where('vartotojo_id', '=', $vartotojo_id)->get();
@@ -148,7 +152,7 @@ class SutartysController extends Controller
             
         }
 
-        $kliento_sutartys = Sutartys::select('sutartys.nr', 'sudarymo_data', DB::raw('sutarties_busena.busena as sut_busena'),
+        $kliento_sutartys = Sutartys::select('sutartys.nr', 'sudarymo_data','sutartys.busena', DB::raw('sutarties_busena.busena as sut_busena'),
                             DB::raw('keliones.valstybe as valstybe'), DB::raw('miestas.pavadinimas as miestas'),
                             DB::raw('kelioniu_datos.isvykimo_data as isvykimas'),DB::raw('kelioniu_datos.grizimo_data as grizimas'), 
                             'zmoniu_sk', 'bendra_kaina', 'draudimo_nr')
@@ -159,5 +163,49 @@ class SutartysController extends Controller
                             ->where('vartotojo_id', '=', $vartotojo_id)
                             ->paginate(2);
         return view('uzsakymai.klientoUzsakymai', compact('kliento_sutartys'));
+    }
+
+    public static function getPaslaugos($sutarties_nr)
+    {
+        $ekskursijos = Ekskursijos::where('sutarties_nr', '=', $sutarties_nr)->get();
+        $auto_nuomos = Auto_nuomos::where('sutarties_nr', '=', $sutarties_nr)->get();
+        $draudimas = Sutartys::select(DB::raw('draudimai.*'))
+        ->join('draudimai', 'sutartys.draudimo_nr', '=', 'draudimai.nr')
+        ->join('draudimo_tipas', 'draudimai.tipas', '=', 'draudimo_tipas.id')
+        ->where('sutartys.nr', '=', $sutarties_nr)
+        ->first();
+
+        return compact('ekskursijos');
+    }
+
+    public function update($id)
+	{
+        $sutartis= Sutartys::where('nr',$id)->first();
+        if($sutartis != null)
+        {
+            Sutartys::where('nr',$id)->update(request(['busena']));
+        }
+        return Redirect::back();
+    }
+
+    public function rodytidarbuotojui()
+    {
+        if(!Auth::check())
+        return Redirect::to('/');
+        request()->user()->authorizeRoles(['Administratorius','Darbuotojas']);
+        $sutartys = Sutartys::select('sutartys.nr','sutartys.busena', DB::raw('sutarties_busena.busena as sut_busena'),
+        DB::raw('concat(users.name," ",users.surname) as uzsakovas'), DB::raw('miestas.pavadinimas as miestas'),
+        DB::raw('concat("Nr. ",keliones.id," ,Šalis: ",keliones.valstybe," ,Miestas: ") as kelione'))
+        ->join('sutarties_busena', 'sutartys.busena', '=', 'sutarties_busena.id')
+        ->join('users', 'users.id', '=', 'sutartys.vartotojo_id')
+        ->join('keliones', 'sutartys.keliones_nr', '=', 'keliones.id')
+        ->join('miestas', 'miestas.kodas', '=', 'keliones.miesto_kodas')
+        ->where('sutartys.busena','2')->orWhere('sutartys.busena','4')->get();
+        return view('uzsakymai.laukiantyspatvirtinimo',compact('sutartys'));
+    }
+
+    public function archyvuoti($id)
+    {
+
     }
 }

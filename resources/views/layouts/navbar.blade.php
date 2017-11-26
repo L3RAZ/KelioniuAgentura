@@ -1,6 +1,7 @@
 <div id="topMenu">
 	<ul class="nav">
 	    <li><a href="/" title="Pradzia">Pradžia</a></li>
+<<<<<<< HEAD
 		<!-- rodo tik klientui -->
 		<li><a href="/klientouzsakymai" title="Uzsakymai">Jūsų užsakymai</a></li>
 		<!-- rodo tik adminui -->
@@ -13,6 +14,31 @@
 		<!-- rodo tik darbuotojui ir adminui -->
 		<li><a href="" title="Ataskaitos">Ataskaitos</a></li>
 
+=======
+		@guest
+		@else
+			@if(Auth::user()->hasRole('Klientas'))
+			<li><a href="/klientouzsakymai" title="Uzsakymai">Jūsų užsakymai</a></li>
+			@endif
+			@if(Auth::user()->hasRole('Administratorius'))
+			<li><a href="" title="Darbuotojai">Darbuotojai</a></li>
+			<li><a href="/keliones/prideti/nauja" title="Keliones">Nauja kelionė</a></li>
+			<li class="dropdown"><a href="#">Paslaugos<span class="caret"></span>
+			</a>
+			<div class="dropdown-content">
+				<a href="/draudimai/prideti">Naujas draudimas</a>
+				<a href="/ekskursijos/prideti">Nauja ekskursija</a>
+				<a href="/automobiliai/prideti">Naujas automobilis</a>
+				<a href="/viesbuciai/prideti">Naujas viešbutis</a>
+			</div>
+			</li>
+			<li><a href="/miestai/prideti" title="Miestai">Naujas miestas</a></li>
+			@endif
+			@if(Auth::user()->hasRole('Darbuotojas'))
+			<li><a href="/sutartys/patvirtinimai/tikrinti" title="klientuSutartys">Klientų sutartys</a></li>
+			@endif
+		@endguest
+>>>>>>> develop
 		@guest
 		<li style="float:right"><a href="{{ route('login') }}">Prisijungti</a></li>
 		<li style="float:right"><a href="{{ route('register') }}">Registracija</a></li>
@@ -34,7 +60,7 @@
 					</form>
 
 			</div>
-		</li
+		</li>
 		@endguest
 	</ul>
 </div>
