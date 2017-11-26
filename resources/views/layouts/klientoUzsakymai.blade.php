@@ -11,7 +11,7 @@
     @foreach($kliento_sutartys as $sutartis)
     <div class="row">
     
-        <table>
+        <table id="uzsakymasTable">
             <tr>
                 <td>Sutarties nr.: </td>
                 <td>{{ $sutartis->nr}}</td>
@@ -25,7 +25,7 @@
                 <td>{{ $sutartis->sut_busena}}</td>
             </tr> 
             <tr>
-                <td>Keloinės kryptis: </td>
+                <td>Kelionės kryptis: </td>
                 <td>{{ $sutartis->valstybe}}</td>
             </tr> 
             <tr>
@@ -51,6 +51,13 @@
             <tr>
                 <td>Užsakymo kaina: </td>
                 <td>{{ $sutartis->bendra_kaina}} &euro;</td>
+            </tr>
+            <tr>
+                <td colspan="2"><a>Papildomos paslaugos</a></td>
+            </tr>
+            <tr>
+                <td><a>Apmokėti</a></td>
+                <td><a>Atšaukti</a></td>
             </tr>
         </table>
     

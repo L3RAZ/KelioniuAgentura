@@ -13,6 +13,7 @@ use Eloquent;
 use Session;
 use Auth;
 use Redirect;
+use Illuminate\Support\Facades\Input;
 
 class SutartysController extends Controller
 {
@@ -56,6 +57,10 @@ class SutartysController extends Controller
         ]);
         $sutartis = Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'viesbucio_id', 'sudarymo_data', 'pasirinkta_data', 
         'bendra_kaina', 'busena', 'zmoniu_sk']));
+        $pasirinkta_data = Input::get('pasirinkta_data');
+        $zmoniu_sk = Input::get('zmoniu_sk');
+        Kelioniu_datos::where('id', '=', $pasirinkta_data)
+        ->decrement('laisvu_vietu_sk', $zmoniu_sk);
 
         //Session::put(['sutartis', $sutartis]);
 
