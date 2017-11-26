@@ -35,7 +35,7 @@ class SutartysController extends Controller
         ->where('keliones_nr', '=', $keliones_nr)
         ->get();
 
-        return view('layouts.pridetiUzsakyma', compact('datos', 'viesbuciai'));
+        return view('sutartys.pridetiUzsakyma', compact('datos', 'viesbuciai'));
     }
 
     public function store() {
@@ -109,6 +109,6 @@ class SutartysController extends Controller
                             ->join('viesbuciai', 'sutartys.viesbucio_id', '=', 'viesbuciai.id')
                             ->where('vartotojo_id', '=', $vartotojo_id)
                             ->paginate(2);
-        return view('layouts.klientoUzsakymai', compact('kliento_sutartys'));
+        return view('uzsakymai.klientoUzsakymai', compact('kliento_sutartys'));
     }
 }
