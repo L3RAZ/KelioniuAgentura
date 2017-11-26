@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    
 <!-- paslepti nuo kliento, darbuotojo ir neprisijungusio 
 <div class="row">
     <div class="col-12 col-sm-12 col-md-12 col-xs-12"><input type="button" name="admin" value="Administratoriaus sąsaja" class="button"></div>

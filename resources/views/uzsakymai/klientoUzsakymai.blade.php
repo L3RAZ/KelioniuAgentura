@@ -56,8 +56,26 @@
                 <td colspan="2"><a>Papildomos paslaugos</a></td>
             </tr>
             <tr>
-                <td><a>Apmokėti</a></td>
-                <td><a>Atšaukti</a></td>
+                <td>
+                    @if(request()->user()->hasCards())
+                    <form method="POST" action="/sutartys/{{ $sutartis->nr }}">
+                    {{ method_field('PATCH') }}
+                    {{ csrf_field() }}
+                        <input type="hidden" name="busena" value="2">
+                        <button type="submit" class="btn btn-success">Apmokėti</button>
+                    </form>
+                    @else
+                        <button class="btn disabled">Apmokėti</button>
+                    @endif
+                </td>
+                <td>
+                    <form method="POST" action="/sutartys/{{ $sutartis->nr }}">
+                        {{ method_field('PATCH') }}
+                        {{ csrf_field() }}
+                        <input type="hidden" name="busena" value="4">
+                        <button type="submit" class="btn btn-danger">Atšaukti</button>
+                    </form>
+                </td>
             </tr>
         </table>
     

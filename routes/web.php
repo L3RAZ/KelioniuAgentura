@@ -21,10 +21,13 @@ Route::get('/', 'KelioneController@index');
 });*/
 Auth::routes();
 Route::resource('korteles', 'KorteleController');
-Route::get('/korteles/prideti/{belenkas}','KorteleController@create');
+Route::get('/korteles/prideti/{new}','KorteleController@create');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/keliones/{id}', 'KelioneController@show');
 Route::get('/pridetiuzsakyma', 'SutartysController@create');
 Route::post('/pridetiuzsakyma', 'SutartysController@store');
 Route::get('/klientouzsakymai', 'SutartysController@showkliento');
+
+
+Route::patch('/sutartys/{id}', 'SutartysController@update');

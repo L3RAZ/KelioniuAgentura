@@ -14,6 +14,8 @@ class KorteleController extends Controller
      */
     public function index(Request $request)
     {
+        if(!Auth::check())
+        return Redirect::to('/');
         $id = $request->user()->id;
         $korteles = Kortele::Where('savininko_id',$id)->get();
         return view('korteles.sarasas',compact('korteles'));
@@ -26,6 +28,8 @@ class KorteleController extends Controller
      */
     public function create()
     {
+        if(!Auth::check())
+        return Redirect::to('/');
         return view('korteles.naujakortele');
     }
 
@@ -37,8 +41,6 @@ class KorteleController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        
         $kortele = new Kortele;
         $kortele->savininko_id = request('savininko_id');
         $kortele->saskaitos_nr = request('saskaitos_nr');
@@ -50,7 +52,6 @@ class KorteleController extends Controller
         $kortele->savininko_vardas = request('savininko_vardas');
         $kortele->savininko_pavarde = request('savininko_pavarde');
         $kortele->save();
-        //dd($kortele);
         
         return redirect('/korteles');
     }

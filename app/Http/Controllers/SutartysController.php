@@ -19,11 +19,14 @@ class SutartysController extends Controller
 {
     public function index()
     {
-        return view('layouts.pridetiUzsakyma');
+        return view('uzsakymai.pridetiUzsakyma');
     }
 
     public function create()
     {
+        if(!Auth::check())
+        return Redirect::to('/');
+
         $keliones_nr = Session::get('kelione')->id;
         $datos = Kelioniu_datos::where('keliones_nr', '=', $keliones_nr)
         ->where('laisvu_vietu_sk', '>', '1')
@@ -35,7 +38,7 @@ class SutartysController extends Controller
         ->where('keliones_nr', '=', $keliones_nr)
         ->get();
 
-        return view('sutartys.pridetiUzsakyma', compact('datos', 'viesbuciai'));
+        return view('uzsakymai.pridetiUzsakyma', compact('datos', 'viesbuciai'));
     }
 
     public function store() {
@@ -123,5 +126,15 @@ class SutartysController extends Controller
         ->first();
 
         return compact('ekskursijos');
+    }
+
+    public function update($id)
+	{
+        $sutartis= Sutartys::where('nr',$id)->first();
+        if($sutartis != null)
+        {
+            $sutartis->update(request(['busena']));
+        }
+        return redirect('/klientouzsakymai');
     }
 }

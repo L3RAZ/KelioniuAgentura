@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Kortele;
 
 class User extends Authenticatable
 {
@@ -60,5 +61,10 @@ class User extends Authenticatable
     public function hasRole($role)
     {
       return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function hasCards()
+    {
+        return 0 !== count(Kortele::where('savininko_id',$this->id)->get());
     }
 }
