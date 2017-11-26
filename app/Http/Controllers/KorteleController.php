@@ -26,7 +26,7 @@ class KorteleController extends Controller
      */
     public function create()
     {
-        //
+        return view('korteles.naujakortele');
     }
 
     /**
@@ -37,7 +37,22 @@ class KorteleController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         
+        $kortele = new Kortele;
+        $kortele->savininko_id = request('savininko_id');
+        $kortele->saskaitos_nr = request('saskaitos_nr');
+        $kortele->banko_pavadinimas = request('banko_pavadinimas');
+        $kortele->korteles_nr = request('korteles_nr');
+        $kortele->galiojimo_data = request('korteles_data1').'/'.request('korteles_data2');
+        $kortele->cvv = request()->get('CVV');
+        $kortele->korteles_tipas = request('korteles_tipas');
+        $kortele->savininko_vardas = request('savininko_vardas');
+        $kortele->savininko_pavarde = request('savininko_pavarde');
+        $kortele->save();
+        //dd($kortele);
+        
+        return redirect('/korteles');
     }
 
     /**

@@ -21,6 +21,8 @@ class CreateKortelesTable extends Migration
             $table->string('korteles_nr');
             $table->string('galiojimo_data');
             $table->string('korteles_tipas');
+            $table->string('savininko_vardas');
+            $table->string('savininko_pavarde');
             $table->integer('cvv')->lentgh(10);
             $table->timestamps();
         });
