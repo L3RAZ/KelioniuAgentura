@@ -35,7 +35,7 @@ class SutartysController extends Controller
         ->where('keliones_nr', '=', $keliones_nr)
         ->get();
 
-        return view('sutartys.pridetiUzsakyma', compact('datos', 'viesbuciai'));
+        return view('uzsakymai.pridetiUzsakyma', compact('datos', 'viesbuciai'));
     }
 
     public function store() {

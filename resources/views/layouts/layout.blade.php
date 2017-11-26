@@ -9,11 +9,9 @@
 <body>
 <header>
 
-	<div class="headerImg">
-		<div class="headerTitle">
-			<h1></h1>	
-		</div>
-	</div>
+<span><a href="http://localhost:8000/">
+    <div class="headerImg">
+    </div></a></span>
 </header>
 @include('layouts.navbar')
 <div class="content">

@@ -21,10 +21,14 @@ Route::get('/', 'KelioneController@index');
 });*/
 Auth::routes();
 Route::resource('korteles', 'KorteleController');
-Route::get('/korteles/prideti/{belenkas}','KorteleController@create');
+Route::get('/korteles/prideti/{belenkas}','KorteleController@create'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/keliones/{id}', 'KelioneController@show');
 Route::get('/pridetiuzsakyma', 'SutartysController@create');
 Route::post('/pridetiuzsakyma', 'SutartysController@store');
 Route::get('/klientouzsakymai', 'SutartysController@showkliento');
+Route::get('/viesbuciai/prideti','ViesbuciaiController@create');
+Route::post('/viesbuciai/{kazkas}','ViesbuciaiController@store');
+Route::get('/miestai/prideti', 'MiestaiController@create');
+Route::post('/miestai/{kazkas}','MiestaiController@store');
