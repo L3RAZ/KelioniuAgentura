@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="container">
+@if(count($kliento_sutartys)>0)
     <div class="row">
         <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Jūsų užsakymai</h2>
     </div>
@@ -86,5 +87,10 @@
     <div class="center">
         {!! $kliento_sutartys->render() !!}
     </div>
+    @else
+    <div class="row">
+        <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Jūs šiuo metu sutarčių neturite</h2>
+    </div>
+    @endif
 </div>
 @endsection
