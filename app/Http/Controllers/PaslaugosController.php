@@ -9,10 +9,12 @@ use App\Auto_nuomos;
 use App\Sutartys;
 use App\Sutartys_ekskursijos;
 use App\Viesbuciai_keliones;
+use App\Automobilis;
 use DB;
 use Auth;
 use Redirect;
 use Session;
+use Datetime;
 use Illuminate\Support\Facades\Input;
 
 class PaslaugosController extends Controller
@@ -52,7 +54,7 @@ class PaslaugosController extends Controller
             ->first();
         }
         Session::put(['sutartis'=>$sutartis]);
-        return view('paslaugos.sutartiesPaslaugos', compact('ekskursijos', 'auto_nuomos', 'viesbutis', 'draudimas'));
+        return view('paslaugos.sutartiesPaslaugos', compact('ekskursijos', 'auto_nuomos', 'viesbutis', 'draudimas', 'sutartis'));
     }
 
     public function createViesbutis() 
@@ -149,6 +151,40 @@ class PaslaugosController extends Controller
                                             'ekskursijos_nr' => $ekskursija]);
         }
 
+
+        return redirect('/klientouzsakymai/'.$sutarties_nr);
+    }
+
+    public function createAutoNuoma() 
+    {
+        $automobiliai = Automobilis::whereNull('auto_nuomos_id')->get();
+
+        return view('autonuoma.uzsakyti', compact('automobiliai'));
+    }
+
+    public function storeAutoNuoma() 
+    {
+        //$pradzios_data = Input::get('pradzios_data');
+        //$pabaigos_data = Input::get('pabaigos_data');
+
+        $pradzios_data = new DateTime(Input::get('pradzios_data'));
+        $pabaigos_data = new DateTime(Input::get('pabaigos_data'));
+
+        $dienos = date_diff($pabaigos_data, $pradzios_data)->format("%d");
+        $automobilio_nr = Input::get('automobilio_nr');
+        $paros_kaina = Automobilis::select('paros_kaina')
+        ->where('nr', '=', $automobilio_nr)
+        ->first();
+        $bendra_kaina = $dienos * $paros_kaina->paros_kaina;
+        $sutarties_nr = Session::get('sutartis')->nr;
+
+        $auto_nuoma = Auto_nuomos::create(['sutarties_nr' => $sutarties_nr,
+                            'pradzios_data' => $pradzios_data,
+                            'pabaigos_data' => $pabaigos_data,
+                            'bendra_kaina' => $bendra_kaina]);
+
+        Automobilis::where('nr', '=', $automobilio_nr)
+        ->update(['auto_nuomos_id' => $auto_nuoma->id]);
 
         return redirect('/klientouzsakymai/'.$sutarties_nr);
     }

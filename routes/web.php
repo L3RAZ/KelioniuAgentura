@@ -38,6 +38,9 @@ Route::post('/uzsakytiviesbuti', 'PaslaugosController@storeViesbutis');
 Route::get('/uzsakytidraudima', 'PaslaugosController@createDraudimas');
 Route::post('/uzsakytidraudima', 'PaslaugosController@storeDraudimas');
 
+Route::get('/uzsakytiauto', 'PaslaugosController@createAutoNuoma');
+Route::post('/uzsakytiauto', 'PaslaugosController@storeAutoNuoma');
+
 Route::get('/uzsakytiekskursijas', 'PaslaugosController@createEkskursija');
 Route::post('/uzsakytiekskursijas', 'PaslaugosController@storeEkskursija');
 Route::patch('/sutartys/{id}', 'SutartysController@update');

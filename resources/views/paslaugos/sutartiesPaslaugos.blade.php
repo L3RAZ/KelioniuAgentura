@@ -40,9 +40,11 @@
             </div>
             @else 
             <div class="row"><h4>Jūs nesate užsisake šios paslaugos.</h4></div>
+            @if( $sutartis->busena == 1)
             <div class="row">
-                <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" onclick="window.location='{{ url('/uzsakytiviesbuti') }}'" ><input type="button" name="uzsakyti" value="Užsakyti viešbutį" class="button"></div>
+                <div class="col-6 col-sm-6 col-md-6 col-xs-6 col-md-offset-3" onclick="window.location='{{ url('/uzsakytiviesbuti') }}'" ><input type="button" name="uzsakyti" value="Užsakyti viešbutį" class="button"></div>
             </div>
+            @endif
             @endif
         </div>
     </div>
@@ -84,9 +86,11 @@
             </div>
             @else 
             <div class="row"><h4>Jūs nesate užsisake šios paslaugos.</h4></div>
+            @if( $sutartis->busena == 1)
             <div class="row">
-                <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" onclick="window.location='{{ url('/uzsakytiekskursijas') }}'" ><input type="button" name="uzsakyti" value="Užsakyti ekskursijas" class="button"></div>
+                <div class="col-6 col-sm-6 col-md-6 col-xs-6 col-md-offset-3" onclick="window.location='{{ url('/uzsakytiekskursijas') }}'" ><input type="button" name="uzsakyti" value="Užsakyti ekskursijas" class="button"></div>
             </div>
+            @endif
             @endif
         </div>
     </div>
@@ -120,10 +124,12 @@
                 @endforeach
             </div>
             @else 
-            <div class="row"><h4>Jūs nesate užsisake šios paslaugos.</h4></div>   
+            <div class="row"><h4>Jūs nesate užsisake šios paslaugos.</h4></div> 
+            @if( $sutartis->busena == 1)  
             <div class="row">
-                <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" ><input type="button" name="uzsakyti" value="Užsakyti automobilio nuomą" class="button"></div>
+                <div class="col-6 col-sm-6 col-md-6 col-xs-6 col-md-offset-3" onclick="window.location='{{ url('/uzsakytiauto') }}'"><input type="button" name="uzsakyti" value="Užsakyti automobilio nuomą" class="button"></div>
             </div>
+            @endif
             @endif
         </div>
     </div>
@@ -160,9 +166,11 @@
             </div>
             @else 
             <div class="row"><h4>Jūs nesate užsisake šios paslaugos.</h4></div>
+            @if( $sutartis->busena == 1)
             <div class="row">
-                <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" onclick="window.location='{{ url('/uzsakytidraudima') }}'" ><input type="button" name="uzsakyti" value="Užsakyti draudimą" class="button"></div>
+                <div class="col-6 col-sm-6 col-md-6 col-xs-6 col-md-offset-3" onclick="window.location='{{ url('/uzsakytidraudima') }}'" ><input type="button" name="uzsakyti" value="Užsakyti draudimą" class="button"></div>
             </div>
+            @endif
             @endif
         </div>
     </div>
