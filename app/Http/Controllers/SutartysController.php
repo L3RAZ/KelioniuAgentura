@@ -137,4 +137,19 @@ class SutartysController extends Controller
         }
         return redirect('/klientouzsakymai');
     }
+
+    public function rodytidarbuotojui()
+    {
+        
+    }
+
+    public function archyvuoti($id)
+    {
+
+    }
+
+    public function salinti($id)
+    {
+
+    }
 }
