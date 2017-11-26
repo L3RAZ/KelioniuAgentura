@@ -8,10 +8,12 @@ use App\Ekskursijos;
 use App\Auto_nuomos;
 use App\Sutartys;
 use App\Sutartys_ekskursijos;
+use App\Viesbuciai_keliones;
 use DB;
 use Auth;
 use Redirect;
 use Session;
+use Illuminate\Support\Facades\Input;
 
 class PaslaugosController extends Controller
 {
@@ -50,6 +52,70 @@ class PaslaugosController extends Controller
             ->first();
         }
         Session::put(['sutartis'=>$sutartis]);
-        return view('paslaugos.sutartiesPaslaugos', compact('ekskursijos', 'auto_nuomos', 'viesbutis'));
+        return view('paslaugos.sutartiesPaslaugos', compact('ekskursijos', 'auto_nuomos', 'viesbutis', 'draudimas'));
+    }
+
+    public function createViesbutis() 
+    {
+        $sutarties_nr = Session::get('sutartis')->nr;
+
+        $kelione = Sutartys::select('keliones_nr')
+        ->where('sutartys.nr', '=', $sutarties_nr)
+        ->first();
+
+        $keliones_nr = $kelione->keliones_nr;
+
+        $viesbuciai = Viesbuciai_keliones::select('viesbucio_id', 
+        DB::raw('viesbuciai.pavadinimas as pavadinimas'), DB::raw('viesbuciai.reitingas as reitingas'),
+        DB::raw('viesbuciai.paros_kaina as paros_kaina'), DB::raw('viesbuciai.adresas as adresas'),
+        DB::raw('viesbuciai.telefono_nr as tel_nr'))
+        ->join('viesbuciai', 'viesbuciai.id', '=', 'viesbuciai_keliones.viesbucio_id')
+        ->where('keliones_nr', '=', $keliones_nr)
+        ->get();
+
+        return view('viesbuciai.uzsakyti', compact('viesbuciai', 'sutarties_nr', 'keliones_nr'));
+    }
+
+    public function storeViesbutis() 
+    {
+        $viesbutis = Input::get('viesbucio_id');
+        $sutarties_nr = Session::get('sutartis')->nr;
+
+        Sutartys::where('sutartys.nr', '=', $sutarties_nr)
+        ->update(['viesbucio_id' => $viesbutis]);
+        return redirect('/klientouzsakymai/'.$sutarties_nr);
+    }
+
+    public function createDraudimas() 
+    {
+        $sutarties_nr = Session::get('sutartis')->nr;
+
+        $isvykimas = Sutartys::select(DB::raw('kelioniu_datos.isvykimo_data as isvykimas'))
+        ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
+        ->where('sutartys.nr', '=', $sutarties_nr)
+        ->first();
+
+        $grizimas = Sutartys::select(DB::raw('kelioniu_datos.grizimo_data as grizimas'))
+        ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
+        ->where('sutartys.nr', '=', $sutarties_nr)
+        ->first();
+
+        $draudimai = Draudimai::select('nr', 'kaina', 'galioja_nuo', 'galioja_iki', 'draudimo_imone', 'draudimo_tipas.tipas as tipas')
+        ->join('draudimo_tipas', 'draudimai.tipas', '=', 'draudimo_tipas.id')
+        ->where('galioja_nuo', '<=', $isvykimas->isvykimas)
+        ->where('galioja_iki', '>=', $grizimas->grizimas)
+        ->get();
+
+        return view('draudimai.uzsakyti', compact('draudimai'));
+    }
+
+    public function storeDraudimas() 
+    {
+        $draudimas = Input::get('draudimo_nr');
+        $sutarties_nr = Session::get('sutartis')->nr;
+
+        Sutartys::where('sutartys.nr', '=', $sutarties_nr)
+        ->update(['draudimo_nr' => $draudimas]);
+        return redirect('/klientouzsakymai/'.$sutarties_nr);
     }
 }

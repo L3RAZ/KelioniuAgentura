@@ -34,7 +34,9 @@ class KelioneController extends Controller
 
         $datos = Kelioniu_datos::select('id', 'keliones_nr', 'isvykimo_data', 'grizimo_data', 'laisvu_vietu_sk')
         ->where('keliones_nr', '=', $id)
+        ->where('laisvu_vietu_sk', '>', '0')
         ->get();
+
         
         $viesbuciai = Viesbuciai_keliones::select('viesbucio_id', 
                         DB::raw('viesbuciai.pavadinimas as pavadinimas'), DB::raw('viesbuciai.reitingas as reitingas'),

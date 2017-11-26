@@ -32,5 +32,8 @@ Route::get('klientouzsakymai', 'SutartysController@showkliento');
 Route::get('/klientouzsakymai/{id}', 'PaslaugosController@show');
 Route::get('/klientouzsakymai', 'SutartysController@showkliento');
 
-Route::get('/uzsakytiviesbuti', 'ViesbutisController@create');
-Route::post('/uzsakytiviesbuti', 'ViesbutisController@store');
+Route::get('/uzsakytiviesbuti', 'PaslaugosController@createViesbutis');
+Route::post('/uzsakytiviesbuti', 'PaslaugosController@storeViesbutis');
+
+Route::get('/uzsakytidraudima', 'PaslaugosController@createDraudimas');
+Route::post('/uzsakytidraudima', 'PaslaugosController@storeDraudimas');
