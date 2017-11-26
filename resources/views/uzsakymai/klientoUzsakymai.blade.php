@@ -39,10 +39,6 @@
             <tr>
                 <td>Grįžimo data: </td>
                 <td>{{ $sutartis->grizimas}}</td>
-            </tr>   
-            <tr>
-                <td>Viešbutis: </td>
-                <td>{{ $sutartis->vies_pav}}, {{ $sutartis->vies_adr }}</td>
             </tr> 
             <tr>
                 <td>Asmenų skaičius: </td>

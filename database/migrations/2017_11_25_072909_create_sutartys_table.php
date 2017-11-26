@@ -17,7 +17,7 @@ class CreateSutartysTable extends Migration
             $table->increments('nr');
             $table->integer('vartotojo_id')->unsigned();
             $table->integer('keliones_nr')->unsigned();
-            $table->integer('viesbucio_id')->unsigned();
+            $table->integer('viesbucio_id')->unsigned()->nullable($value = true);
             $table->integer('draudimo_nr')->unsigned()->nullable($value = true);
             $table->date('sudarymo_data');
             $table->integer('pasirinkta_data')->unsigned();

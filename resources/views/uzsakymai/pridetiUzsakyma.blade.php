@@ -34,17 +34,7 @@
     </div>
 </div>
 
-<div class="row" >
-    <label for="viesbutis" class="col-md-4 control-label" name="viesbutislabel">Pasirinkite viešbutį: </label>
-    <div class="col-md-6">
-        <select id="viesbucio_id" type="text" class="form-control" name="viesbucio_id">
-            <option value="" ></option>
-            @foreach($viesbuciai as $viesbutis)
-                <option value="{{ $viesbutis->viesbucio_id }}">{{ $viesbutis->pavadinimas }} {{ $viesbutis->reitingas }}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
+
 
 <div class="row" >
     <label for="zmoniu_sk" class="col-md-4 control-label" name="zmoniulabel">Nurodykite asmenų skaičių: </label>
