@@ -15,7 +15,7 @@ class Sutartys extends Model
     protected $fillable = [
         'vartotojo_id',
         'keliones_nr',
-        'viesbucio_id',
+        //'viesbucio_id',
         'sudarymo_data',
         'bendra_kaina',
         'busena',

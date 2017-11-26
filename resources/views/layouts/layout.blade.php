@@ -4,12 +4,13 @@
 	<title>Kelionių Agentūra</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo asset('/css/style.css')?>" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script:700" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 <header>
 
-<span><a href="http://localhost:8000/">
+<span><a href="/">
     <div class="headerImg">
     </div></a></span>
 </header>
