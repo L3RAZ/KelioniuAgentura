@@ -53,7 +53,7 @@
             </tr>
             <tr>
                 <td>
-                    @if(request()->user()->hasCards())
+                    @if(request()->user()->hasCards() && $sutartis->busena == 1)
                     <form method="POST" action="/sutartys/{{ $sutartis->nr }}">
                     {{ method_field('PATCH') }}
                     {{ csrf_field() }}
@@ -65,12 +65,18 @@
                     @endif
                 </td>
                 <td>
+
+                    @if( $sutartis->busena == 4 || $sutartis->busena == 5)
+                    <button class="btn disabled">Atšaukti</button>
+                    @else
                     <form method="POST" action="/sutartys/{{ $sutartis->nr }}">
                         {{ method_field('PATCH') }}
                         {{ csrf_field() }}
                         <input type="hidden" name="busena" value="4">
-                        <button type="submit" class="btn btn-danger">Atšaukti</button>
+                        <button type="submit"  class="btn btn-danger">Atšaukti</button>
                     </form>
+
+                    @endif
                 </td>
             </tr>
         </table>

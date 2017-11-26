@@ -37,3 +37,5 @@ Route::get('/viesbuciai/prideti','ViesbuciaiController@create');
 Route::post('/viesbuciai/{kazkas}','ViesbuciaiController@store');
 Route::get('/miestai/prideti', 'MiestaiController@create');
 Route::post('/miestai/{kazkas}','MiestaiController@store');
+
+Route::get('/sutartys/patvirtinimai/{id}','SutartysController@rodytidarbuotojui');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Kortele;
 use Illuminate\Http\Request;
+use Auth;
 
 class KorteleController extends Controller
 {
