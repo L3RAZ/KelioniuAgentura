@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Kelionės pasiūlymas</h2>
+        <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Kelionės pasiūlymai</h2>
     </div>
 <div class="row">
 <a href="{{ url('/') }}"><< Atgal į pradžią</a>
