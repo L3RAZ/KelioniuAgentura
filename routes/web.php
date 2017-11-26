@@ -39,3 +39,5 @@ Route::get('/miestai/prideti', 'MiestaiController@create');
 Route::post('/miestai/{kazkas}','MiestaiController@store');
 
 Route::get('/sutartys/patvirtinimai/{id}','SutartysController@rodytidarbuotojui');
+Route::get('/darbuotojai','UserController@index');
+Route::delete('/darbuotojai/{id}','userController@destroy');

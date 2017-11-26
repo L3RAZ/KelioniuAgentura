@@ -7,7 +7,7 @@
 			<li><a href="/klientouzsakymai" title="Uzsakymai">Jūsų užsakymai</a></li>
 			@endif
 			@if(Auth::user()->hasRole('Administratorius'))
-			<li><a href="" title="Darbuotojai">Darbuotojai</a></li>
+			<li><a href="/darbuotojai" title="Darbuotojai">Darbuotojai</a></li>
 			<li><a href="/keliones/prideti/nauja" title="Keliones">Nauja kelionė</a></li>
 			<li class="dropdown"><a href="#">Paslaugos<span class="caret"></span>
 			</a>
@@ -43,7 +43,6 @@
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 						{{ csrf_field() }}
 					</form>
-
 			</div>
 		</li>
 		@endguest
