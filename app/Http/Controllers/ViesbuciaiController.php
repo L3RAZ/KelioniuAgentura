@@ -28,7 +28,6 @@ class ViesbuciaiController extends Controller
     public function create()
     {   
         $miestai = Miestas::all();
-       // dd($miestai);
         return view('viesbuciai.prideti', compact('miestai'));
     }
 
