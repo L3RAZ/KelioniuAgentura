@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'birth_date'=>'required|date',
             'address'=>'string|max:50',
-            'phone'=>'required|string|max:20'
+            'phone'=>'required|string|max:50'
         ]);
     }
 
@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'person_id'=>$data['person_id'],
             'birth_date'=>$data['birth_date'],
             'address'=>$data['address'],
-            'has_licencse'=>$data['has_license'],
+            'has_license'=>$data['has_license'],
             'license_from'=>$data['license_from'],
             'phone'=>$data['phone']
         ]);
