@@ -11,7 +11,7 @@ body {
 	height: auto;
 	display: block;
 	font-family: 'Hind Vadodara', sans-serif;
-	color: white
+	color: white;
 	clear: both;
 	margin: 0;
 	padding: 0;
@@ -96,6 +96,7 @@ footer {
 }
 
 .row {
+	margin-left: 0 !important;
 	width: 100%;
 }
 
@@ -122,6 +123,7 @@ h2 {
 	z-index: 999;
 	padding-right: 100px;
 	padding-left: 100px;
+	border-bottom:  1px solid #887c7c;
 }
 
 #topMenu ul {
@@ -142,10 +144,13 @@ h2 {
 	padding: 14px 16px;
 	text-decoration: none;
 	height: 16px;
+	min-height: 48px;
+
 }
 
 #topMenu li a:hover:not(.active) {
-	background-color: inherit;
+	background-color: #badbde;
+
 }
 
 
@@ -186,9 +191,13 @@ h2 {
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 .dropdown:hover .dropdown-content {
-    display: block;
+	display: block;
+    background-color: #badbde9c;
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: #badbde;
+}
+.nav{
+	min-height: 100%;
 }
