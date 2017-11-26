@@ -27,6 +27,8 @@
     @endforeach
     </tbody>
 </table>
-    
+<div class="row">
+<div class="col-md-12 "><button onClick="window.location.href='/darbuotojai/prideti'" type="button"  class="button">Pridėti darbuotoją</button></div>
+</div>
     </div>
 @endsection
