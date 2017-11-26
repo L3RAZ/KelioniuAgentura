@@ -29,30 +29,35 @@ h4 {
 	width: 100vw;
 	height: 180px;
 	position:relative;
-	background-image: url("header5.png");
+	background-image: url("header7.jpg");
+	background-repeat: no-repeat;
+	background-size:cover;
 }
 
 .headerTitle {
-	margin-top: 70px;
+	margin-top: 50px;
 	position: absolute;
 	width: 100%;
 	overflow-x: hidden;
+	text-align: center;
 }
 
-
-.headerTitle h1, footer p {
-	margin-left: 8.33%;
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script:700);
+.headerTitle h1 {
 	color: #f9f6f6;
-	font-family: monaco, Consolas, "Lucida Console", monospace;
-	font-size: 14px;
+	font-family: 'Dancing Script', cursive;
+	font-size: 70px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 500;
-	line-height: 26.4px;
-}
-
-.headerTitle h1 {
-	font-size: 50px;
+	line-height: 60px;
+	text-shadow: rgb(136, 136, 136) 1px 0px 0px,
+	 rgb(136, 136, 136) 0.540302px 0.841471px 0px,
+	  rgb(136, 136, 136) -0.416147px 0.909297px 0px,
+	   rgb(136, 136, 136) -0.989992px 0.14112px 0px,
+		rgb(136, 136, 136) -0.653644px -0.756802px 0px,
+		 rgb(136, 136, 136) 0.283662px -0.958924px 0px,
+		  rgb(136, 136, 136) 0.96017px -0.279415px 0px;
 }
 
 footer {
@@ -64,6 +69,13 @@ footer {
     right: 0;
 	width: 100%;
 	overflow-x: hidden;
+	text-align: center;
+}
+
+footer p {
+	font-size: 14px;
+	text-align: center;
+	color: white;
 }
 
 .content {

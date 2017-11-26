@@ -12,8 +12,8 @@
 		<li><a href="" title="klientuSutartys">Klientų sutartys</a></li>
 
 		@guest
-		<li style="float:right"><a href="{{ route('login') }}">Login</a></li>
-		<li style="float:right"><a href="{{ route('register') }}">Register</a></li>
+		<li style="float:right"><a href="{{ route('login') }}">Prisijungti</a></li>
+		<li style="float:right"><a href="{{ route('register') }}">Registracija</a></li>
 		@else
 		<li class="dropdown" style="float:right">
 			<a href="#">
@@ -25,7 +25,7 @@
 					<a href="{{ route('logout') }}"
 						onclick="event.preventDefault();
 								 document.getElementById('logout-form').submit();">
-						Logout
+						Atsijungti
 					</a>
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 						{{ csrf_field() }}
