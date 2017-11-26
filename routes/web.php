@@ -27,4 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/keliones/{id}', 'KelioneController@show');
 Route::get('/pridetiuzsakyma', 'SutartysController@create');
 Route::post('/pridetiuzsakyma', 'SutartysController@store');
+<<<<<<< HEAD
 
+=======
+Route::get('klientouzsakymai', 'SutartysController@showkliento');
+>>>>>>> uzsakymo-sukurimas

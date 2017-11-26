@@ -57,7 +57,7 @@
 <input name="sudarymo_data" type="hidden" value="<?php echo date("Y-m-d");?>">
 <input name="yra_archyvuota" type="hidden" value="0">
 <input name="busena" type="hidden" value="1">
-<input name="vartotojo_id" type="hidden" value="1"><!-- pakeisti i vartotojo id pagal sesija -->
+<input name="vartotojo_id" type="hidden" value="{{ Auth::id() }}"><!-- pakeisti i vartotojo id pagal sesija -->
 <input name="keliones_nr" type="hidden" value="{{ Session::get('kelione')->id}}">
 <input name="bendra_kaina" type="hidden" value="0">
 
