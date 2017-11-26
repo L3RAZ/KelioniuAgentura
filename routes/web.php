@@ -28,3 +28,5 @@ Route::get('/keliones/{id}', 'KelioneController@show');
 Route::get('/pridetiuzsakyma', 'SutartysController@create');
 Route::post('/pridetiuzsakyma', 'SutartysController@store');
 Route::get('klientouzsakymai', 'SutartysController@showkliento');
+
+Route::get('/klientouzsakymai/{id}', 'PaslaugosController@show');

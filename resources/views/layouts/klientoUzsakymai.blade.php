@@ -53,7 +53,7 @@
                 <td>{{ $sutartis->bendra_kaina}} &euro;</td>
             </tr>
             <tr>
-                <td colspan="2"><a>Papildomos paslaugos</a></td>
+                <td colspan="2"><a href="{{ url('/klientouzsakymai/'.$sutartis->nr) }}" onClick="PaslaugosController::show($sutartis->nr)">Papildomos paslaugos</a></td>
             </tr>
             <tr>
                 <td><a>Apmokėti</a></td>

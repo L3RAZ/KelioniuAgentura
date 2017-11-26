@@ -111,17 +111,4 @@ class SutartysController extends Controller
                             ->paginate(2);
         return view('layouts.klientoUzsakymai', compact('kliento_sutartys'));
     }
-
-    public static function getPaslaugos($sutarties_nr)
-    {
-        $ekskursijos = Ekskursijos::where('sutarties_nr', '=', $sutarties_nr)->get();
-        $auto_nuomos = Auto_nuomos::where('sutarties_nr', '=', $sutarties_nr)->get();
-        $draudimas = Sutartys::select(DB::raw('draudimai.*'))
-        ->join('draudimai', 'sutartys.draudimo_nr', '=', 'draudimai.nr')
-        ->join('draudimo_tipas', 'draudimai.tipas', '=', 'draudimo_tipas.id')
-        ->where('sutartys.nr', '=', $sutarties_nr)
-        ->first();
-
-        return compact('ekskursijos');
-    }
 }
