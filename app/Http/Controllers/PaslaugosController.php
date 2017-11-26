@@ -11,6 +11,7 @@ use App\Sutartys_ekskursijos;
 use DB;
 use Auth;
 use Redirect;
+use Session;
 
 class PaslaugosController extends Controller
 {
@@ -48,7 +49,7 @@ class PaslaugosController extends Controller
             ->where('sutartys.nr', '=', $id)
             ->first();
         }
-
+        Session::put(['sutartis'=>$sutartis]);
         return view('paslaugos.sutartiesPaslaugos', compact('ekskursijos', 'auto_nuomos', 'viesbutis'));
     }
 }

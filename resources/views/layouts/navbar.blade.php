@@ -10,6 +10,8 @@
 		<li><a href="" title="Paslaugos">Paslaugos</a></li>
 		<!-- rodo tik darbuotojui -->
 		<li><a href="" title="klientuSutartys">Klientų sutartys</a></li>
+		<!-- rodo tik darbuotojui ir adminui -->
+		<li><a href="" title="Ataskaitos">Ataskaitos</a></li>
 
 		@guest
 		<li style="float:right"><a href="{{ route('login') }}">Prisijungti</a></li>

@@ -62,37 +62,7 @@
 </div>
 @endforeach
 </div>
-<div class="infoBox">
-<div class="row"><h4>Galimi viešbučiai:</h4></div>
-@foreach($viesbuciai as $viesbutis)
-<div class="row">
-    
-        <table class="kelioneInfoTable">
-            <tr>
-                <td>Pavadinimas: </td>
-                <td>{{ $viesbutis->pavadinimas}}</td>
-            </tr>
-            <tr>
-                <td>Reitingas: </td>
-                <td>{{ $viesbutis->reitingas}}</td>
-            </tr>
-            <tr>
-                <td>Paros kaina: </td>
-                <td>{{ $viesbutis->paros_kaina}} &euro;</td>
-            </tr> 
-            <tr>
-                <td>Adresas: </td>
-                <td>{{ $viesbutis->adresas}}</td>
-            </tr> 
-            <tr>
-                <td>Telefono nr.: </td>
-                <td>{{ $viesbutis->tel_nr}}</td>
-            </tr> 
-        </table>
-    
-</div>
-@endforeach
-</div>
+
 <div class="row">
     <!-- sita paskui paslepti nuo neprisijungusiu vartotoju-->
     <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" onclick="window.location='{{ url('/pridetiuzsakyma') }}'"><input type="button" name="uzsakyti" value="Užsakyti" class="button"></div>

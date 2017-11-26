@@ -42,7 +42,7 @@
             @else 
             <div class="row"><h4>Jūs nesate užsisake šios paslaugos.</h4></div>
             <div class="row">
-                <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" ><input type="button" name="uzsakyti" value="Užsakyti draudimą" class="button"></div>
+                <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" onclick="window.location='{{ url('/uzsakytiviesbuti') }}'" ><input type="button" name="uzsakyti" value="Užsakyti viešbutį" class="button"></div>
             </div>
             @endif
         </div>
