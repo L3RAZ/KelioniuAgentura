@@ -39,10 +39,6 @@
             <tr>
                 <td>Grįžimo data: </td>
                 <td>{{ $sutartis->grizimas}}</td>
-            </tr>   
-            <tr>
-                <td>Viešbutis: </td>
-                <td>{{ $sutartis->vies_pav}}, {{ $sutartis->vies_adr }}</td>
             </tr> 
             <tr>
                 <td>Asmenų skaičius: </td>
@@ -53,7 +49,7 @@
                 <td>{{ $sutartis->bendra_kaina}} &euro;</td>
             </tr>
             <tr>
-                <td colspan="2"><a>Papildomos paslaugos</a></td>
+                <td colspan="2"><a href="{{ url('/klientouzsakymai/'.$sutartis->nr) }}" onClick="PaslaugosController::show($sutartis->nr)">Papildomos paslaugos</a></td>
             </tr>
             <tr>
                 <td>
