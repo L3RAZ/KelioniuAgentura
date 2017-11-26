@@ -44,6 +44,6 @@ class KelioneController extends Controller
         ->where('keliones_nr', '=', $id)
         ->get();
 
-        return view('layouts.kelione', compact('kelione', 'datos', 'viesbuciai'));//, compact('datos'), compact('viesbuciai'));
+        return view('keliones.kelione', compact('kelione', 'datos', 'viesbuciai'));//, compact('datos'), compact('viesbuciai'));
     }
 }
