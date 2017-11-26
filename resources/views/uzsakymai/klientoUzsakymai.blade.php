@@ -49,9 +49,11 @@
                 <td>Užsakymo kaina: </td>
                 <td>{{ $sutartis->bendra_kaina}} &euro;</td>
             </tr>
+            @if( $sutartis->busena == 1)
             <tr>
                 <td colspan="2"><a href="{{ url('/klientouzsakymai/'.$sutartis->nr) }}" onClick="PaslaugosController::show($sutartis->nr)">Papildomos paslaugos</a></td>
             </tr>
+            @endif
             <tr>
                 <td>
                     @if(request()->user()->hasCards() && $sutartis->busena == 1)

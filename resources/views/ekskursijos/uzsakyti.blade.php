@@ -15,7 +15,7 @@
                 @foreach($ekskursijos as $ekskursija)
                     <div class="col-md-1">
                     
-                        <input type="checkbox" value="{{ $ekskursija->nr }}" name="ekskursijos_nr">
+                        <input type="checkbox" value="{{ $ekskursija->nr }}" name="ekskursijos_nr[]">
                     </div>
                     <div class="col-md-11">
                         <label for="ekskursijos_nr">

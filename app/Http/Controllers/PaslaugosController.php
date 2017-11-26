@@ -138,4 +138,18 @@ class PaslaugosController extends Controller
 
         return view('ekskursijos.uzsakyti', compact('ekskursijos', 'sutarties_info'));
     }
+
+    public function storeEkskursija() 
+    {
+        $ekskursijos = Input::get('ekskursijos_nr');
+        $sutarties_nr = Session::get('sutartis')->nr;
+
+        foreach($ekskursijos as $ekskursija) {
+            Sutartys_ekskursijos::create(['sutarties_nr' => $sutarties_nr,
+                                            'ekskursijos_nr' => $ekskursija]);
+        }
+
+
+        return redirect('/klientouzsakymai/'.$sutarties_nr);
+    }
 }
