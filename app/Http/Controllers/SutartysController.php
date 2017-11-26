@@ -186,7 +186,6 @@ class SutartysController extends Controller
             Sutartys::where('nr',$id)->update(request(['busena']));
         }
         return Redirect::back();
-        return redirect('/klientouzsakymai');
     }
 
     public function rodytidarbuotojui()
