@@ -8,17 +8,17 @@
 			@endif
 			@if(Auth::user()->hasRole('Administratorius'))
 			<li><a href="" title="Darbuotojai">Darbuotojai</a></li>
-			<li><a href="/keliones/prideti/nauja" title="Keliones">Kelionės</a></li>
+			<li><a href="/keliones/prideti/nauja" title="Keliones">Nauja kelionė</a></li>
 			<li class="dropdown"><a href="#">Paslaugos<span class="caret"></span>
 			</a>
 			<div class="dropdown-content">
-				<a href="/korteles">Naujas draudimas</a>
-				<a href="/korteles">Nauja ekskursija</a>
-				<a href="/korteles">Naujas automobilis</a>
-				<a href="/korteles">Naujas viešbutis</a>
+				<a href="/draudimai/prideti">Naujas draudimas</a>
+				<a href="/ekskursijos/prideti">Nauja ekskursija</a>
+				<a href="/automobiliai/prideti">Naujas automobilis</a>
+				<a href="/viesbuciai/prideti">Naujas viešbutis</a>
 			</div>
 			</li>
-
+			<li><a href="/miestai/prideti" title="Miestai">Naujas miestas</a></li>
 			@endif
 			@if(Auth::user()->hasRole('Darbuotojas'))
 			<li><a href="/sutartys/patvirtinimai/tikrinti" title="klientuSutartys">Klientų sutartys</a></li>
