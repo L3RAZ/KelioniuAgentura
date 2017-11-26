@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Kelione;
 use App\Kelioniu_datos;
 use App\Viesbuciai_keliones;
+use App\Miestas;
+use App\Keliones_tipas;
 use DB;
 use Session;
 
@@ -45,5 +47,37 @@ class KelioneController extends Controller
         ->get();
 
         return view('keliones.kelione', compact('kelione', 'datos', 'viesbuciai'));//, compact('datos'), compact('viesbuciai'));
+    }
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {   
+        $miestai = Miestas::all();
+        $keliones_tipai = Keliones_tipas::all(); 
+        return view('keliones.prideti', compact('miestai', 'keliones_tipai'));
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //dd(request());
+        $kelione = new Kelione;
+        $kelione->miesto_kodas = request('miesto_kodas');
+        $kelione->valstybe= request('valstybe');
+        $kelione->kaina = request('kaina');
+        $kelione->transporto_priemones = request('transporto_priemones');
+        $kelione->aprasymas = request('aprasymas');
+        $kelione->tipas = request('tipas');
+        $kelione->save();
+       // dd($viesbutis); 
+        
+        return redirect('/keliones');
     }
 }

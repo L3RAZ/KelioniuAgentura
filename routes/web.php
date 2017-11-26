@@ -31,7 +31,15 @@ Route::get('klientouzsakymai', 'SutartysController@showkliento');
 
 Route::get('/klientouzsakymai/{id}', 'PaslaugosController@show');
 Route::get('/klientouzsakymai', 'SutartysController@showkliento');
+
 Route::get('/viesbuciai/prideti','ViesbuciaiController@create');
 Route::post('/viesbuciai/{kazkas}','ViesbuciaiController@store');
+
 Route::get('/miestai/prideti', 'MiestaiController@create');
 Route::post('/miestai/{kazkas}','MiestaiController@store');
+
+Route::get('/keliones/prideti/{nauja}', 'KelioneController@create');
+Route::post('/keliones/{kazkas}','KelioneController@store');
+
+Route::get('/automobiliai/prideti', 'AutomobiliaiController@create');
+Route::post('/automobiliai/{kazkas}','AutomobiliaiController@store');

@@ -9,9 +9,9 @@
 </head>
 <body>
 <header>
-
 <span><a href="/">
     <div class="headerImg">
+	<h1>Kelionių Agentūra</h1>
     </div></a></span>
 </header>
 @include('layouts.navbar')
