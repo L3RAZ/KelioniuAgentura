@@ -15,12 +15,11 @@
         </ul>
     </div>
 @endif
+
 <div class="row">
-    <a href="{{ url('/') }}"><< Atgal į pradžią</a>
+    <h4>Jūsų pasirinkta kelionė: {{ Session::get('kelione')->valstybe}}  {{Session::get('kelione')->miesto_pav}} {{Session::get('kelione')->kaina}} &euro;</h4>
 </div>
-<div class="row">
-    <p>Jūsų pasirinkta kelionė: {{ Session::get('kelione')->valstybe}}  {{Session::get('kelione')->miesto_pav}} {{Session::get('kelione')->kaina}} &euro;</p>
-</div>
+<div  id="uzsakymasForm">
 <form method="post">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="row" >
@@ -57,7 +56,7 @@
 <input name="sudarymo_data" type="hidden" value="<?php echo date("Y-m-d");?>">
 <input name="yra_archyvuota" type="hidden" value="0">
 <input name="busena" type="hidden" value="1">
-<input name="vartotojo_id" type="hidden" value="1"><!-- pakeisti i vartotojo id pagal sesija -->
+<input name="vartotojo_id" type="hidden" value="{{ Auth::id() }}"><!-- pakeisti i vartotojo id pagal sesija -->
 <input name="keliones_nr" type="hidden" value="{{ Session::get('kelione')->id}}">
 <input name="bendra_kaina" type="hidden" value="0">
 
@@ -67,6 +66,6 @@
     </div> 
 </div>
 </form>
-
+</div>
 </div>
 @endsection

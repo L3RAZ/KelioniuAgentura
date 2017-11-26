@@ -21,6 +21,10 @@ header {
 	width: 100wv;
 }
 
+h4 {
+	text-align: center;
+}
+
 .headerImg {
 	width: 100vw;
 	height: 180px;
@@ -64,11 +68,12 @@ footer {
 
 .content {
 	width: 63.33%;
-	min-height: 800px;
+	min-height: 700px;
 	margin: 0 17.33%;
 	border-right: 1px solid #68B2DF;
 	border-left: 1px solid #68B2DF;
-	box-shadow: 0px 0px 40px -5px rgba(104,178,223,1);
+	box-shadow: 5px 0 12px -3px rgb(164, 195, 241),
+    -5px 0 12px -3px rgb(164, 195, 241);
 	flex: 1;
 	clear: both;
 	display: flex;
@@ -78,7 +83,7 @@ footer {
 .button {
 	width: 100%;
 	padding: 1;
-	margin-top:5%;
+	margin:5% 0;
 	height: 50px;
 	font-family: monaco, Consolas, "Lucida Console", monospace;
 	font-size: 14px;
@@ -87,7 +92,6 @@ footer {
 	background-color: #badbde;
 	border: 1px solid #68B2DF;
 	color: #736caf;
-
 }
 
 .button:hover {
@@ -115,6 +119,35 @@ h2 {
 	border: 1px solid rgb(164, 195, 241);
 	height: 50px
 }
+
+#uzsakymasTable, .kelioneInfoTable{
+	width: 60%;
+	margin: 5% 20%;
+	border-collapse: collapse;
+	border: 1px 0 1px 0 solid rgb(164, 195, 241);
+}
+#uzsakymasTable td, .kelioneInfoTable td {
+	border-bottom: 1px solid rgb(164, 195, 241);
+	padding: 8px;
+	width: 50%;
+}
+
+.infoBox{
+	width: 80%;
+	margin: 3% 10%;
+	border: 1px solid rgb(164, 195, 241);
+}
+
+
+#uzsakymasForm {
+	width: 60%;
+	margin: 3% 20%;
+}
+
+#uzsakymasForm label, select {
+	height: 50px;
+}
+
 #topMenu {
 	font-size: 13px;
 	width: 100%;
@@ -201,3 +234,29 @@ h2 {
 .nav{
 	min-height: 100%;
 }
+
+.center {
+    text-align: center;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

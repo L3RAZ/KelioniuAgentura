@@ -15,7 +15,8 @@ class CreateEkskursijosTable extends Migration
     {
         Schema::create('ekskursijos', function (Blueprint $table) {
             $table->increments('nr');
-            $table->integer('sutarties_nr')->unsigned();
+            $table->integer('sutarties_nr')->unsigned()->nullable($value = true);
+            $table->integer('keliones_nr')->unsigned();
             $table->date('isvykimo_data');
             $table->date('grizimo_data');
             $table->string('vieta');
@@ -25,6 +26,7 @@ class CreateEkskursijosTable extends Migration
 
         Schema::table('ekskursijos', function($table) {
             $table->foreign('sutarties_nr')->references('nr')->on('sutartys');
+            $table->foreign('keliones_nr')->references('id')->on('keliones');
         });
     }
 

@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 use App\Sutartys;
 use App\Kelioniu_datos;
 use App\Viesbuciai_keliones;
+use App\Ekskursijos;
+use App\Auto_nuomos;
 use DB;
 use Eloquent;
 use Session;
+use Auth;
+use Redirect;
+use Illuminate\Support\Facades\Input;
 
 class SutartysController extends Controller
 {
@@ -50,9 +55,73 @@ class SutartysController extends Controller
             'viesbucio_id.required' => 'Būtina pasirinkti viešbutį.',
             'zmoniu_sk.required' => 'Būtina nurodyti asmenų skaičių'
         ]);
-        Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'viesbucio_id', 'sudarymo_data', 'pasirinkta_data', 
+        $sutartis = Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'viesbucio_id', 'sudarymo_data', 'pasirinkta_data', 
         'bendra_kaina', 'busena', 'zmoniu_sk']));
+        $pasirinkta_data = Input::get('pasirinkta_data');
+        $zmoniu_sk = Input::get('zmoniu_sk');
+        Kelioniu_datos::where('id', '=', $pasirinkta_data)
+        ->decrement('laisvu_vietu_sk', $zmoniu_sk);
 
-        return redirect('/');
+        //Session::put(['sutartis', $sutartis]);
+
+        return redirect('/klientouzsakymai');
+    }
+
+    public function showkliento()
+    {
+        if(!Auth::check())
+            return Redirect::to('/');
+
+        $vartotojo_id = Auth::id();
+        $sutartys = Sutartys::where('vartotojo_id', '=', $vartotojo_id)->get();
+        foreach($sutartys as $sutartis){
+            if($sutartis->bendra_kaina == 0) {
+                $dienos = Sutartys::select(DB::raw('datediff(kelioniu_datos.grizimo_data, kelioniu_datos.isvykimo_data) as dienos'))
+                ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
+                ->where('sutartys.nr', '=', $sutartis->nr)
+                ->first();
+                $paros_kaina = Sutartys::select(DB::raw('viesbuciai.paros_kaina as paros_kaina'))
+                ->join('viesbuciai', 'sutartys.viesbucio_id', '=', 'viesbuciai.id')
+                ->where('sutartys.nr', '=', $sutartis->nr)
+                ->first();
+                $keliones_kaina = Sutartys::select(DB::raw('keliones.kaina as kaina'))
+                ->join('keliones', 'sutartys.keliones_nr', '=', 'keliones.id')
+                ->where('sutartys.nr', '=', $sutartis->nr)
+                ->first();
+                $bendra_kaina = $dienos->dienos * $paros_kaina->paros_kaina * ($sutartis->zmoniu_sk / 2) +
+                $keliones_kaina->kaina * $sutartis->zmoniu_sk;
+                
+                Sutartys::where('sutartys.nr', '=', $sutartis->nr)
+                ->update(['bendra_kaina' => $bendra_kaina]);
+            
+            }
+        }
+
+        $kliento_sutartys = Sutartys::select('sutartys.nr', 'sudarymo_data', DB::raw('sutarties_busena.busena as sut_busena'),
+                            DB::raw('keliones.valstybe as valstybe'), DB::raw('miestas.pavadinimas as miestas'),
+                            DB::raw('kelioniu_datos.isvykimo_data as isvykimas'),DB::raw('kelioniu_datos.grizimo_data as grizimas'),
+                            DB::raw('viesbuciai.pavadinimas as vies_pav'), DB::raw('viesbuciai.adresas as vies_adr'), 
+                            'zmoniu_sk', 'bendra_kaina', 'draudimo_nr')
+                            ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
+                            ->join('sutarties_busena', 'sutartys.busena', '=', 'sutarties_busena.id')
+                            ->join('keliones', 'sutartys.keliones_nr', '=', 'keliones.id')
+                            ->join('miestas', 'miestas.kodas', '=', 'keliones.miesto_kodas')
+                            ->join('viesbuciai', 'sutartys.viesbucio_id', '=', 'viesbuciai.id')
+                            ->where('vartotojo_id', '=', $vartotojo_id)
+                            ->paginate(2);
+        return view('layouts.klientoUzsakymai', compact('kliento_sutartys'));
+    }
+
+    public static function getPaslaugos($sutarties_nr)
+    {
+        $ekskursijos = Ekskursijos::where('sutarties_nr', '=', $sutarties_nr)->get();
+        $auto_nuomos = Auto_nuomos::where('sutarties_nr', '=', $sutarties_nr)->get();
+        $draudimas = Sutartys::select(DB::raw('draudimai.*'))
+        ->join('draudimai', 'sutartys.draudimo_nr', '=', 'draudimai.nr')
+        ->join('draudimo_tipas', 'draudimai.tipas', '=', 'draudimo_tipas.id')
+        ->where('sutartys.nr', '=', $sutarties_nr)
+        ->first();
+
+        return compact('ekskursijos');
     }
 }
