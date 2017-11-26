@@ -118,4 +118,24 @@ class PaslaugosController extends Controller
         ->update(['draudimo_nr' => $draudimas]);
         return redirect('/klientouzsakymai/'.$sutarties_nr);
     }
+
+    public function createEkskursija() 
+    {
+        $sutarties_nr = Session::get('sutartis')->nr;
+
+        $sutarties_info = Sutartys::select(DB::raw('kelioniu_datos.isvykimo_data as isvykimas'), DB::raw('kelioniu_datos.grizimo_data as grizimas'),
+        'sutartys.keliones_nr')
+        ->join('kelioniu_datos', 'sutartys.pasirinkta_data', '=', 'kelioniu_datos.id')
+        ->where('sutartys.nr', '=', $sutarties_nr)
+        ->first();
+
+        $ekskursijos = Ekskursijos::where('ekskursijos.keliones_nr', '=', $sutarties_info->keliones_nr)
+        ->where('isvykimo_data','>=', $sutarties_info->isvykimas)
+        ->where('isvykimo_data', '<=', $sutarties_info->grizimas)
+        ->where('grizimo_data','>=', $sutarties_info->isvykimas)
+        ->where('grizimo_data', '<=', $sutarties_info->grizimas)
+        ->get();
+
+        return view('ekskursijos.uzsakyti', compact('ekskursijos', 'sutarties_info'));
+    }
 }

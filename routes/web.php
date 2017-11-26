@@ -37,3 +37,6 @@ Route::post('/uzsakytiviesbuti', 'PaslaugosController@storeViesbutis');
 
 Route::get('/uzsakytidraudima', 'PaslaugosController@createDraudimas');
 Route::post('/uzsakytidraudima', 'PaslaugosController@storeDraudimas');
+
+Route::get('/uzsakytiekskursijas', 'PaslaugosController@createEkskursija');
+Route::post('/uzsakytiekskursijas', 'PaslaugosController@storeEkskursija');
