@@ -18,10 +18,18 @@
 
 <div class="row">
     <table id="kelionesTable">
+            <tr class="tableRow">
+                <th>Kryptis</th>
+                <th>Miestas</th>
+                <th>Kaina asmeniui</th>
+                <th></th>
+            </tr>
             @foreach($keliones as $kelione)
                 <tr class="tableRow">
-                    <td style="width: 75%">{{$kelione['valstybe']}}  {{$kelione['miestas']}}     {{$kelione['kaina']}} &euro;</td>
-                    <td><a href="{{ url('/keliones/'.$kelione['id']) }}" onClick="KelioneController::show($kelione['id'])" style="width: 25%;"> plačiau</a>
+                    <td>{{$kelione['valstybe']}}</td>
+                    <td>{{$kelione['miestas']}}</td>
+                    <td>{{$kelione['kaina']}} &euro;</td>
+                    <td><a href="{{ url('/keliones/'.$kelione['id']) }}" onClick="KelioneController::show($kelione['id'])" style="width: 25%;"> plačiau</a></td>
                 </tr>
             @endforeach
     </table>

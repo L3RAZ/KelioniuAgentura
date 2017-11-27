@@ -7,20 +7,6 @@
 				<li><a href="/klientouzsakymai" title="Uzsakymai">Jūsų užsakymai</a></li>
 			@endif
 			@if(Auth::user()->hasRole('Administratorius'))
-<<<<<<< HEAD
-				<li><a href="" title="Darbuotojai">Darbuotojai</a></li>
-				<li><a href="/keliones/prideti/nauja" title="Keliones">Nauja kelionė</a></li>
-				<li class="dropdown">
-					<a href="#">Paslaugos<span class="caret"></span></a>
-					<div class="dropdown-content">
-						<a href="/draudimai/prideti">Naujas draudimas</a>
-						<a href="/ekskursijos/prideti">Nauja ekskursija</a>
-						<a href="/automobiliai/prideti">Naujas automobilis</a>
-						<a href="/viesbuciai/prideti">Naujas viešbutis</a>
-					</div>
-				</li>
-				<li><a href="/miestai/prideti" title="Miestai">Naujas miestas</a></li>
-=======
 			<li><a href="/darbuotojai" title="Darbuotojai">Darbuotojai</a></li>
 			<li><a href="/keliones/prideti/nauja" title="Keliones">Nauja kelionė</a></li>
 			<li class="dropdown"><a href="#">Paslaugos<span class="caret"></span>
@@ -33,7 +19,6 @@
 			</div>
 			</li>
 			<li><a href="/miestai/prideti" title="Miestai">Naujas miestas</a></li>
->>>>>>> develop
 			@endif
 			@if(Auth::user()->hasRole('Darbuotojas'))
 				<li><a href="/sutartys/patvirtinimai/tikrinti" title="klientuSutartys">Klientų sutartys</a></li>

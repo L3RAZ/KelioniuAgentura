@@ -73,7 +73,7 @@ class PaslaugosController extends Controller
         DB::raw('viesbuciai.paros_kaina as paros_kaina'), DB::raw('viesbuciai.adresas as adresas'),
         DB::raw('viesbuciai.telefono_nr as tel_nr'))
         ->join('viesbuciai', 'viesbuciai.id', '=', 'viesbuciai_keliones.viesbucio_id')
-        ->where('keliones_nr', '=', $keliones_nr->keliones_nr)
+        ->where('keliones_nr', '=', $kelione->keliones_nr)
         ->get();
 
         return view('viesbuciai.uzsakyti', compact('viesbuciai', 'sutarties_nr', 'keliones_nr'));
