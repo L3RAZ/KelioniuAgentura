@@ -27,8 +27,8 @@
 			<li class="dropdown"><a href="#">Ataskaitos<span class="caret"></span></a>
 			<div class="dropdown-content">
 				<a href="/ataskaitos/populiariausiossalys">Populiariausios šalys</a>
-				<a href="">Neapmokėtos sutartys</a>
-				<a href="">Vidutinės kelionių kainos</a>
+				<a href="/ataskaitos/neapmoketos">Neapmokėtos sutartys</a>
+				<a href="/ataskaitos/vidutineskainos">Vidutinės kelionių kainos</a>
 				<a href="">Populiariausios paslaugos</a>
 				<a href="">Bendra kelionių suma</a>
 			</div>

@@ -55,3 +55,5 @@ Route::get('/darbuotojai','UserController@index');
 Route::delete('/darbuotojai/{id}','userController@destroy');
 
 Route::get('/ataskaitos/populiariausiossalys', 'AtaskaitosController@popsalys');
+Route::get('/ataskaitos/neapmoketos', 'AtaskaitosController@neapmoketos');
+Route::get('/ataskaitos/vidutineskainos', 'AtaskaitosController@vidutinesKainos');
