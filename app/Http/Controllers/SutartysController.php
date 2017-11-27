@@ -183,7 +183,14 @@ class SutartysController extends Controller
         $sutartis= Sutartys::where('nr',$id)->first();
         if($sutartis != null)
         {
-            Sutartys::where('nr',$id)->update(request(['busena']));
+            if(request('yra_archyvuota'))
+            {
+                Sutartys::where('nr',$id)->update(request(['yra_archyvuota']));
+            }
+            else
+            {
+                Sutartys::where('nr',$id)->update(request(['busena']));
+            }
         }
         return Redirect::back();
     }
@@ -200,12 +207,7 @@ class SutartysController extends Controller
         ->join('users', 'users.id', '=', 'sutartys.vartotojo_id')
         ->join('keliones', 'sutartys.keliones_nr', '=', 'keliones.id')
         ->join('miestas', 'miestas.kodas', '=', 'keliones.miesto_kodas')
-        ->where('sutartys.busena','2')->orWhere('sutartys.busena','4')->get();
+        ->where('sutartys.yra_archyvuota','0')->orderBy('busena', 'asc')->get();
         return view('uzsakymai.laukiantyspatvirtinimo',compact('sutartys'));
-    }
-
-    public function archyvuoti($id)
-    {
-
     }
 }

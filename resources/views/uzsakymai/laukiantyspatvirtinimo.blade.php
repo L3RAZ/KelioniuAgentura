@@ -8,7 +8,7 @@
     </div>
 <table style="width: 100%" class="table table-hover table-bordered">
     <thead>
-        <tr><td>Sutarties numeris</td><td>Sutarties užsakovas</td><td>Kelionė</td><td>Būsena</td><td>Patvirtinti</td></tr>
+        <tr><td>Sutarties numeris</td><td>Sutarties užsakovas</td><td>Kelionė</td><td>Būsena</td><td>Patvirtinti</td><td>Šalinti sutartį</td></tr>
     </thead>
     <tbody>
     @foreach($sutartys as $sutartis)
@@ -23,8 +23,15 @@
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
                 <input type="hidden" name="busena" value="{{ ($sutartis->busena == 2 ? 3 : 5) }}">
-                <button type="submit"  class="btn btn-success">Patvirtinti</button>
-            </form>
+                @if($sutartis->busena !== 2 || $sutartis->busena !==4)
+                <button type="button" class="btn btn-basic disabled">Patvirtinti</button>
+                @else
+                <button type="submit" class="btn btn-success">Patvirtinti</button>
+                @endif
+        </td>
+        <td>
+        <button type="submit" name="yra_archyvuota" value="1" class="btn btn-danger">Šalinti</button>
+        </form>
         </td>           
     </tr>
     @endforeach

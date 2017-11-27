@@ -4,7 +4,9 @@
 <div class="container">
 
 <h2 class="col-12 col-sm-12 col-md-12 col-xs-12">Kelionių pasiūlymai</h2>
-
+@if(count($keliones) == 0)
+<h2>Šiuo metu kelionių pasiūlymų nėra</h2>
+@else
 <div class="row">
     <table id="kelionesTable">
             <tr class="tableRow">
@@ -26,6 +28,7 @@
         {!! $keliones->render() !!}
     </div>
 </div>
+@endif
 </div>
 
 
