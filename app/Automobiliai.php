@@ -8,4 +8,6 @@ class Automobiliai extends Model
 {
     //
     protected $table = 'automobiliai';
+
+    public $timestamps = false;
 }
