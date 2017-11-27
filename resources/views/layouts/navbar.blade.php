@@ -29,7 +29,7 @@
 				<a href="/ataskaitos/populiariausiossalys">Populiariausios šalys</a>
 				<a href="/ataskaitos/neapmoketos">Neapmokėtos sutartys</a>
 				<a href="/ataskaitos/vidutineskainos">Vidutinės kelionių kainos</a>
-				<a href="">Populiariausios paslaugos</a>
+				<a href="/ataskaitos/tipaipaslaugos">Populiariausios paslaugos</a>
 				<a href="">Bendra kelionių suma</a>
 			</div>
 			</li>
