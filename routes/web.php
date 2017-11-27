@@ -32,6 +32,17 @@ Route::get('klientouzsakymai', 'SutartysController@showkliento');
 Route::get('/klientouzsakymai/{id}', 'PaslaugosController@show');
 Route::get('/klientouzsakymai', 'SutartysController@showkliento');
 
+Route::get('/uzsakytiviesbuti', 'PaslaugosController@createViesbutis');
+Route::post('/uzsakytiviesbuti', 'PaslaugosController@storeViesbutis');
+
+Route::get('/uzsakytidraudima', 'PaslaugosController@createDraudimas');
+Route::post('/uzsakytidraudima', 'PaslaugosController@storeDraudimas');
+
+Route::get('/uzsakytiauto', 'PaslaugosController@createAutoNuoma');
+Route::post('/uzsakytiauto', 'PaslaugosController@storeAutoNuoma');
+
+Route::get('/uzsakytiekskursijas', 'PaslaugosController@createEkskursija');
+Route::post('/uzsakytiekskursijas', 'PaslaugosController@storeEkskursija');
 Route::patch('/sutartys/{id}', 'SutartysController@update');
 Route::get('/viesbuciai/prideti','ViesbuciaiController@create');
 Route::post('/viesbuciai/{kazkas}','ViesbuciaiController@store');

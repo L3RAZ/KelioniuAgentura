@@ -112,7 +112,7 @@ class SutartysController extends Controller
                 ->join('draudimai', 'sutartys.draudimo_nr', '=', 'draudimai.nr')
                 ->where('sutartys.nr', '=', $sutartis->nr)
                 ->first();
-                $draudimo_kaina = $d_kaina->kaina;
+                $draudimo_kaina = $d_kaina->kaina * $zmoniu_sk;
             }
             else $draudimo_kaina = 0;
             //------------------------------------------------------------------------
@@ -126,7 +126,7 @@ class SutartysController extends Controller
             ->first();
 
             if($ek_kaina->kaina != NULL)
-                $ekskursiju_kaina = $ek_kaina->kaina;
+                $ekskursiju_kaina = $ek_kaina->kaina * $zmoniu_sk;
             else $ekskursiju_kaina = 0;
             //------------------------------------------------------------------------
 

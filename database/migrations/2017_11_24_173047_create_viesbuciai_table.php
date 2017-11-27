@@ -21,7 +21,6 @@ class CreateViesbuciaiTable extends Migration
             $table->double('paros_kaina');
             $table->string('adresas');
             $table->string('telefono_nr');
-            $table->timestamps();
         });
 
         Schema::table('viesbuciai', function($table) {

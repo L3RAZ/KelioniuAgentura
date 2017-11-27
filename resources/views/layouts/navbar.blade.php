@@ -4,7 +4,7 @@
 		@guest
 		@else
 			@if(Auth::user()->hasRole('Klientas'))
-			<li><a href="/klientouzsakymai" title="Uzsakymai">Jūsų užsakymai</a></li>
+				<li><a href="/klientouzsakymai" title="Uzsakymai">Jūsų užsakymai</a></li>
 			@endif
 			@if(Auth::user()->hasRole('Administratorius'))
 			<li><a href="/darbuotojai" title="Darbuotojai">Darbuotojai</a></li>
@@ -21,7 +21,7 @@
 			<li><a href="/miestai/prideti" title="Miestai">Naujas miestas</a></li>
 			@endif
 			@if(Auth::user()->hasRole('Darbuotojas'))
-			<li><a href="/sutartys/patvirtinimai/tikrinti" title="klientuSutartys">Klientų sutartys</a></li>
+				<li><a href="/sutartys/patvirtinimai/tikrinti" title="klientuSutartys">Klientų sutartys</a></li>
 			@endif
 		@endguest
 		@guest
