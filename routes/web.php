@@ -46,9 +46,21 @@ Route::post('/uzsakytiekskursijas', 'PaslaugosController@storeEkskursija');
 Route::patch('/sutartys/{id}', 'SutartysController@update');
 Route::get('/viesbuciai/prideti','ViesbuciaiController@create');
 Route::post('/viesbuciai/{kazkas}','ViesbuciaiController@store');
+
 Route::get('/miestai/prideti', 'MiestaiController@create');
 Route::post('/miestai/{kazkas}','MiestaiController@store');
 
+Route::get('/keliones/prideti/{nauja}', 'KelioneController@create');
+Route::post('/keliones/{kazkas}','KelioneController@store');
+
+Route::get('/automobiliai/prideti', 'AutomobiliaiController@create');
+Route::post('/automobiliai/{kazkas}','AutomobiliaiController@store');
 Route::get('/sutartys/patvirtinimai/{id}','SutartysController@rodytidarbuotojui');
+
+Route::get('/ekskursijos/prideti', 'EkskursijosController@create');
+Route::post('/ekskursijos/{kazkas}','EkskursijosController@store');
+
+Route::get('/draudimai/prideti', 'DraudimaiController@create');
+Route::post('/draudimai/{kazkas}','DraudimaiController@store');
 Route::get('/darbuotojai','UserController@index');
 Route::delete('/darbuotojai/{id}','userController@destroy');

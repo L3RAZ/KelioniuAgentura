@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('banko_pavadinimas') ? ' has-error' : '' }}">
-                            <label for="banko_pavadinimas" class="col-md-4 control-label">banko pavadinimas:</label>
+                            <label for="banko_pavadinimas" class="col-md-4 control-label">Banko pavadinimas:</label>
 
                             <div class="col-md-6">
                                 <input name="banko_pavadinimas" type="text" class="form-control" id="banko_pavadinimas" value="{{ old('banko_pavadinimas') }}" required autofocus>
