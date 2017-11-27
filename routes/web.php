@@ -43,6 +43,7 @@ Route::post('/uzsakytiauto', 'PaslaugosController@storeAutoNuoma');
 
 Route::get('/uzsakytiekskursijas', 'PaslaugosController@createEkskursija');
 Route::post('/uzsakytiekskursijas', 'PaslaugosController@storeEkskursija');
+
 Route::patch('/sutartys/{id}', 'SutartysController@update');
 Route::get('/viesbuciai/prideti','ViesbuciaiController@create');
 Route::post('/viesbuciai/{kazkas}','ViesbuciaiController@store');
@@ -68,3 +69,8 @@ Route::get('/darbuotojai','UserController@index');
 Route::delete('/darbuotojai/{id}','userController@destroy');
 Route::post('/darbuotojai','UserController@store');
 
+
+Route::get('/ataskaitos/populiariausiossalys', 'AtaskaitosController@popsalys');
+Route::get('/ataskaitos/neapmoketos', 'AtaskaitosController@neapmoketos');
+Route::get('/ataskaitos/vidutineskainos', 'AtaskaitosController@vidutinesKainos');
+Route::get('/ataskaitos/tipaipaslaugos', 'AtaskaitosController@tipaipaslaugos');

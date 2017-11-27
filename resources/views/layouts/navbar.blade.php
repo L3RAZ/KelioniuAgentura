@@ -23,6 +23,17 @@
 			@if(Auth::user()->hasRole('Darbuotojas'))
 				<li><a href="/sutartys/patvirtinimai/tikrinti" title="klientuSutartys">Klientų sutartys</a></li>
 			@endif
+			@if(Auth::user()->hasRole('Administratorius') || Auth::user()->hasRole('Darbuotojas'))
+			<li class="dropdown"><a href="#">Ataskaitos<span class="caret"></span></a>
+			<div class="dropdown-content">
+				<a href="/ataskaitos/populiariausiossalys">Populiariausios šalys</a>
+				<a href="/ataskaitos/neapmoketos">Neapmokėtos sutartys</a>
+				<a href="/ataskaitos/vidutineskainos">Vidutinės kelionių kainos</a>
+				<a href="/ataskaitos/tipaipaslaugos">Populiariausios paslaugos</a>
+				<a href="">Bendra kelionių suma</a>
+			</div>
+			</li>
+			@endif
 		@endguest
 		@guest
 		<li style="float:right"><a href="{{ route('login') }}">Prisijungti</a></li>
