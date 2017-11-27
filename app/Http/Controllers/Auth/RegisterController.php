@@ -83,6 +83,8 @@ class RegisterController extends Controller
         if(isset($data['role']))
         {
         $user->roles()->attach(Role::where('name',$data['role']));
+        return Redirect::to('/');
+        
         }
         else
         {

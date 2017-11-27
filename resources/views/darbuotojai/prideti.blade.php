@@ -8,7 +8,7 @@
             <div class="panel panel-default" style="background-color: inherit;">
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="/darbuotojai">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -153,10 +153,26 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                            <label for="role" class="col-md-4 control-label">Pareigos:</label>
+
+                            <div class="col-md-6">
+                                <select name="role" id="" class="form-control" required>
+                                    <option value="Darbuotojas">Darbuotojas</option>
+                                    <option value="Administratorius">Administratorius</option>
+                                </select>
+
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    registuotis
+                                    registuoti darbuotoją
                                 </button>
                             </div>
                         </div>
