@@ -80,6 +80,6 @@ class KelioneController extends Controller
         $kelione->save();
        // dd($viesbutis); 
         
-        return redirect('/keliones');
+        return redirect('/');
     }
 }

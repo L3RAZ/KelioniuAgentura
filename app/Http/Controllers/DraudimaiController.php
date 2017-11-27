@@ -52,7 +52,7 @@ class DraudimaiController extends Controller
         $draudimas->tipas = request('tipas');
         $draudimas->save();
 
-        return redirect('/draudimai');
+        return redirect('/');
     }
 
     /**

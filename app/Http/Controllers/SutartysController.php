@@ -42,24 +42,38 @@ class SutartysController extends Controller
     }
 
     public function store() {
-        Eloquent::unguard();
+        if(Input::has('pasirinkta_data')){
+            $data = Kelioniu_datos::where('keliones_nr', '=', Input::get('keliones_nr'))
+            ->where('id', '=', Input::get('pasirinkta_data'))
+            ->first();
 
+            $vietos = $data->laisvu_vietu_sk;
+        }
+        Eloquent::unguard();
         $this->validate(request(), [
             'pasirinkta_data' => 'required',
             'vartotojo_id' => 'required',
             'keliones_nr' => 'required',
-            //'viesbucio_id' => 'required',
             'sudarymo_data' => 'required',
             'yra_archyvuota' => 'required',
-            'zmoniu_sk' => 'required'
+            'zmoniu_sk' => "required|integer|min:1|max:$vietos"
         ],
         [
             'pasirinkta_data.required' => 'Būtina pasirinkti kelionės datą.',
-            //'viesbucio_id.required' => 'Būtina pasirinkti viešbutį.',
-            'zmoniu_sk.required' => 'Būtina nurodyti asmenų skaičių'
+            'zmoniu_sk.required' => 'Būtina nurodyti asmenų skaičių',
+            'zmoniu_sk.max' => 'Nėra pakankamai laisvų vietų',
+            'zmoniu_sk.min' => 'Nurodytas netinkamas žmonių skaičius'
         ]);
-        $sutartis = Sutartys::create(request(['yra_arhyvuota', 'vartotojo_id', 'keliones_nr', 'sudarymo_data', 'pasirinkta_data', 
-        'bendra_kaina', 'busena', 'zmoniu_sk']));
+
+
+        $sutartis = Sutartys::create(request(['yra_arhyvuota', 
+                                                'vartotojo_id', 
+                                                'keliones_nr', 
+                                                'sudarymo_data', 
+                                                'pasirinkta_data', 
+                                                'bendra_kaina', 
+                                                'busena', 
+                                                'zmoniu_sk']));
         $pasirinkta_data = Input::get('pasirinkta_data');
         $zmoniu_sk = Input::get('zmoniu_sk');
         Kelioniu_datos::where('id', '=', $pasirinkta_data)

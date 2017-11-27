@@ -8,4 +8,6 @@ class Miestas extends Model
 {
     //
     //protected $table = 'miestai';
+
+    public $timestamps = false;
 }

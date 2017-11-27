@@ -50,7 +50,7 @@ class ViesbuciaiController extends Controller
         $viesbutis->save();
        // dd($viesbutis); 
         
-        return redirect('/viesbuciai');
+        return redirect('/');
     }
 
     /**

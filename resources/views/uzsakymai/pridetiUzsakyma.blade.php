@@ -26,7 +26,6 @@
                 <label for="pas_data" class="col-md-4 control-label" name="datalabel">Pasirinkite norimą datą: </label>
                 <div class="col-md-6">
                     <select id="pasirinkta_data" type="text" class="form-control" name="pasirinkta_data">
-                        <option value="" ></option>
                         @foreach($datos as $data)
                             <option value="{{ $data->id }}">{{ $data->isvykimo_data }} - {{ $data->grizimo_data }}</option>
                         @endforeach
@@ -34,9 +33,9 @@
                 </div>
             </div>
             <div class="row" >
-                <label for="zmoniu_sk" class="col-md-4 control-label" name="zmoniulabel">Nurodykite asmenų skaičių: </label>
+                <label for="zmoniu_skk" class="col-md-4 control-label" name="zmoniulabel">Nurodykite asmenų skaičių: </label>
                 <div class="col-md-6">
-                    <input name="zmoniu_sk" type="text" style="color: black;">
+                    <input name="zmoniu_sk" type="number" style="color: black;" value="">
                 </div>
             </div>
 

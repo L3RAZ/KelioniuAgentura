@@ -30,7 +30,7 @@
 				<a href="/ataskaitos/neapmoketos">Neapmokėtos sutartys</a>
 				<a href="/ataskaitos/vidutineskainos">Vidutinės kelionių kainos</a>
 				<a href="/ataskaitos/tipaipaslaugos">Populiariausios paslaugos</a>
-				<a href="">Bendra kelionių suma</a>
+				<a href="/ataskaitos/bendrakaina">Bendra kelionių suma</a>
 			</div>
 			</li>
 			@endif

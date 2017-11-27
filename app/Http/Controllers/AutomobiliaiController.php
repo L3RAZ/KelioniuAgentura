@@ -55,7 +55,7 @@ class AutomobiliaiController extends Controller
         $automobilis->save();
          
         
-        return redirect('/automobiliai');
+        return redirect('/');
     }
 
     /**
