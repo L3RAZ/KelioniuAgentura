@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h2 class="col-12 col-sm-12 col-md-12 col-xs-12" style="padding: 10%;">Bendra sutarčių kaina, tam tikru laikotarpiu</h2>
+    <h2 class="col-12 col-sm-12 col-md-12 col-xs-12" style="">Bendra sutarčių kaina, tam tikru laikotarpiu</h2>
     <div  id="uzsakymasForm">
     <form method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
