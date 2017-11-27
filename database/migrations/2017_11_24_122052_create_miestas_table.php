@@ -20,6 +20,7 @@ class CreateMiestasTable extends Migration
             $table->string('meras')->nullable($value = true);
             $table->string('savivaldybe')->nullable($value = true);
             $table->string('salis');
+            $table->timestamps();
         });
     }
 

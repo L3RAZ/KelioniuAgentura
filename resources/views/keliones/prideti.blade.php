@@ -113,7 +113,7 @@
                                 </div>
                                 </form>
                                 <div class="col-md-1">
-                                    <a href="/keliones" class="btn btn-danger">Atšaukti</a>
+                                    <a href="/" class="btn btn-danger">Atšaukti</a>
                                 </div>
                             </div>
                             </div>
