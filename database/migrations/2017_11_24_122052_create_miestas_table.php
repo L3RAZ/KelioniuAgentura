@@ -19,6 +19,7 @@ class CreateMiestasTable extends Migration
             $table->integer('pasto_kodas')->nullable($value = true);
             $table->string('meras')->nullable($value = true);
             $table->string('savivaldybe')->nullable($value = true);
+            $table->string('salis');
         });
     }
 
