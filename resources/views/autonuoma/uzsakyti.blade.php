@@ -15,6 +15,35 @@
             </ul>
         </div>
     @endif
+    @if(count($automobiliai) > 0)
+    <div class="infoBox">
+        <div class="row"><h4>Galimi automobiliai:</h4></div>
+        @foreach($automobiliai as $automobilis)
+            <div class="row">
+    
+                <table class="kelioneInfoTable">
+                    <tr>
+                        <td>Markė: </td>
+                        <td>{{ $automobilis->marke}}</td>
+                    </tr>
+                    <tr>
+                        <td>Modelis: </td>
+                        <td>{{ $automobilis->modelis}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pagaminimo metai: </td>
+                        <td>{{ $automobilis->pagaminimo_metai}}</td>
+                    </tr> 
+                    <tr>
+                        <td>Paros kaina: </td>
+                        <td>{{ $automobilis->paros_kaina}} &euro;</td>
+                    </tr>
+                </table>
+    
+            </div>
+        @endforeach
+    </div>
+
     <div  id="uzsakymasForm">
         <form method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -54,5 +83,11 @@
             </div>
         </form>
     </div>
+    @else
+    <h4>Laisvų automobilių nėra</h4>
+    <div class="row">
+    <div class="col-4 col-sm-4 col-md-4 col-xs-4 col-md-offset-4" onclick="window.history.back()" ><input type="button" name="uzsakyti" value="Grįžti atgal" class="button"></div>
+    </div>
+    @endif
 </div>
 @endsection
