@@ -126,10 +126,16 @@ h2 {
 	border-collapse: collapse;
 }
 
-#kelionesTable td {
+#kelionesTable td{
 	width: 25%;
-	border: 1px solid rgb(164, 195, 241);
-	height: 50px
+	padding: 12px;
+	border-bottom: 1px solid rgb(164, 195, 241);
+}
+
+#kelionesTable th {
+	border-bottom: 3px solid rgb(164, 195, 241);
+	padding: 12px;
+	width: 25%;
 }
 
 #uzsakymasTable, .kelioneInfoTable{

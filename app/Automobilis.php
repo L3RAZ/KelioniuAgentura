@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Viesbuciai extends Model
+class Automobilis extends Model
 {
-    protected $table = 'viesbuciai';
+    protected $table = 'automobiliai';
 
     public $timestamps = false;
 }
