@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Sutartys;
 use App\Kelione;
 use DB;
+use Illuminate\Support\Facades\Input;
 
 class AtaskaitosController extends Controller
 {
@@ -96,5 +97,25 @@ class AtaskaitosController extends Controller
         ->get();
 
         return view('ataskaitos.tipaiPaslaugos', compact('poilsine', 'pazintine', 'aktyvi'));
+    }
+
+    public function bendrakainacreate()
+    {
+        return view('ataskaitos.bendraKaina');
+    }
+
+    public function bendrakainastore()
+    {
+        $data = [
+            'pradzia' => Input::get('pradzios_data'),
+            'pabaiga' => Input::get('pabaigos_data')
+        ];
+        
+
+        $ataskaita = Sutartys::select(DB::raw('SUM(bendra_kaina) as suma'))
+        ->whereBetween('sudarymo_data', $data)
+        ->first();
+
+        return view('ataskaitos.bendraKaina', compact('ataskaita'));
     }
 }
