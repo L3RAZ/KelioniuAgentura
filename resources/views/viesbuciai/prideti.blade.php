@@ -61,7 +61,7 @@
                         <label for="reitingas" class="col-md-4 control-label">Paros kaina:</label>
 
                         <div class="col-md-6">
-                            <input name="paros_kaina" type="number" class="form-control" value="{{ old('paros_kaina') }}" required>
+                            <input name="paros_kaina" type="number" step="0.01" class="form-control" value="{{ old('paros_kaina') }}" required>
 
                             @if ($errors->has('paros_kaina'))
                                 <span class="help-block">

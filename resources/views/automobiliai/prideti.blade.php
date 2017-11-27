@@ -44,7 +44,7 @@
                             <label for="variklio_turis" class="col-md-4 control-label">Darbinis tūris cm³:</label>
 
                             <div class="col-md-6">
-                                <input name="variklio_turis" type="number" class="form-control" value="{{ old('variklio_turis') }}" required>
+                                <input name="variklio_turis" type="number" step="0.01" class="form-control" value="{{ old('variklio_turis') }}" required>
 
                                 @if ($errors->has('variklio_turis'))
                                     <span class="help-block">
@@ -58,7 +58,7 @@
                         <label for="variklio_galia" class="col-md-4 control-label">Variklio galia:</label>
 
                         <div class="col-md-6">
-                            <input name="variklio_galia" type="number" class="form-control" value="{{ old('variklio_galia') }}" required>
+                            <input name="variklio_galia" type="number" step="0.01" class="form-control" value="{{ old('variklio_galia') }}" required>
 
                             @if ($errors->has('variklio_galia'))
                                 <span class="help-block">
@@ -83,10 +83,10 @@
 
                         </div>   
                         <div class="form-group{{ $errors->has('paros_kaina') ? ' has-error' : '' }}">
-                        <label for="paros_kaina" class="col-md-4 control-label">Paros_kaina:</label>
+                        <label for="paros_kaina" class="col-md-4 control-label">Nuomos parai Kaina:</label>
 
                         <div class="col-md-6">
-                            <input name="paros_kaina" type="number" class="form-control" value="{{ old('paros_kaina') }}" required>
+                            <input name="paros_kaina" type="number" step="0.01" class="form-control" value="{{ old('paros_kaina') }}" required>
 
                             @if ($errors->has('paros_kaina'))
                                 <span class="help-block">

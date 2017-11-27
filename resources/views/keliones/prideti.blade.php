@@ -47,7 +47,7 @@
                             <label for="kaina" class="col-md-4 control-label">Kelionės kaina:</label>
 
                             <div class="col-md-6">
-                                <input name="kaina" type="number" class="form-control" value="{{ old('kaina') }}" required>
+                                <input name="kaina" type="number" step="0.01" class="form-control" value="{{ old('kaina') }}" required>
 
                                 @if ($errors->has('kaina'))
                                     <span class="help-block">

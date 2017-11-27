@@ -45,3 +45,9 @@ Route::post('/keliones/{kazkas}','KelioneController@store');
 Route::get('/automobiliai/prideti', 'AutomobiliaiController@create');
 Route::post('/automobiliai/{kazkas}','AutomobiliaiController@store');
 Route::get('/sutartys/patvirtinimai/{id}','SutartysController@rodytidarbuotojui');
+
+Route::get('/ekskursijos/prideti', 'EkskursijosController@create');
+Route::post('/ekskursijos/{kazkas}','EkskursijosController@store');
+
+Route::get('/draudimai/prideti', 'DraudimaiController@create');
+Route::post('/draudimai/{kazkas}','DraudimaiController@store');
