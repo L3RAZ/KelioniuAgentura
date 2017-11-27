@@ -62,5 +62,9 @@ Route::post('/ekskursijos/{kazkas}','EkskursijosController@store');
 
 Route::get('/draudimai/prideti', 'DraudimaiController@create');
 Route::post('/draudimai/{kazkas}','DraudimaiController@store');
+
+Route::get('/darbuotojai/prideti','UserController@prideti');
 Route::get('/darbuotojai','UserController@index');
 Route::delete('/darbuotojai/{id}','userController@destroy');
+Route::post('/darbuotojai','UserController@store');
+
