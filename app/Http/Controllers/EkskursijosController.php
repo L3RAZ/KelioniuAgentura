@@ -52,6 +52,8 @@ class EkskursijosController extends Controller
         $ekskursija->kaina = request('kaina');
         $ekskursija->gidas = request('gidas');
         $ekskursija->save();
+
+        return redirect('/');
     }
 
     /**

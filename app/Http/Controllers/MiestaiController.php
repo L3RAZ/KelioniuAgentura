@@ -49,7 +49,7 @@ class MiestaiController extends Controller
         $miestas->save();
        // dd($miestas); 
         
-        return redirect('/miestas');
+        return redirect('/');
     }
 
     /**
